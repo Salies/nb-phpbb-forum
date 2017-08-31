@@ -1,0 +1,169 @@
+<!-- INCLUDE overall_header.html -->
+
+<div class="perf-banner">
+<!--acoes do perfil-->
+<div class="profileactions">
+  <dd>
+    <b><!-- IF U_USER_ADMIN --><a href="{U_USER_ADMIN}">Editar Perfil do Usuário</a><!-- ENDIF --><!-- IF U_USER_BAN --><a href="{U_USER_BAN}">Banir Usuário</a><!-- ENDIF --></b>
+    </dd>
+    <dd>
+    <b><!-- IF U_ADD_FRIEND --><a href="{U_ADD_FRIEND}">Adicionar à minha lista de amigos</a><!-- ENDIF --><!-- IF U_REMOVE_FRIEND --><a href="{U_REMOVE_FRIEND}">Remover da minha lista de amigos</a><!-- ENDIF --><br>
+    <!-- IF U_ADD_FOE --><a href="{U_ADD_FOE}">Adicionar à minha lista de ignorados</a><!-- ENDIF --><!-- IF U_REMOVE_FOE --><a href="{U_REMOVE_FOE}">Remover da minha lista de ignorados</a><!-- ENDIF --></b>
+   </dd>
+</div>
+<!--avatar-->
+<div class="profileavat" style="float:left;position: absolute;top: 25px;left: -10px;">
+	<div class="avatar">
+		{AVATAR_IMG}
+	</div>
+	<div class="rankprofile">
+		<font color="#999" style="font-size: 11px;"><b>{RANK_TITLE}</b></font>
+		<br>
+		<span alt="{RANK_TITLE}" title="{RANK_TITLE}" style="margin-left: -20px;">{RANK_IMG}</span>
+		<br>
+	</div>
+</div>
+<!--fim do avatar-->
+</div>
+<!--nome do cara-->
+<div style="padding:15px;font-size:25px;background:#eee;margin:0 -15px;padding-left:130px"><b><span style="color:#000000"><span style="font-weight: bold;">{USERNAME}</span></span></b>
+<div class="profilestatus <!-- IF S_ONLINE --> online-z<!-- ELSE -->offline-z<!-- ENDIF -->"></div>
+</div>
+<!--conteúdos e secoes-->
+<div class="profilecontact">
+<div class="profilenob">Contato:</div>
+<dl>
+<!-- IF U_PM --><span><a href="{U_PM}"><img src="http://i.imgur.com/hZIaI9o.png" alt="Enviar Mensagem Privada"></a></span><!-- ENDIF -->
+<!-- IF U_EMAIL --><span><a href="{U_EMAIL}"><img src="http://i.imgur.com/LwI9xw7.png" alt="Enviar E-mail"></a></span><!-- ENDIF -->
+<!-- IF S_PROFILE_FACEBOOK --><span><a href="https://www.facebook.com/{PROFILE_FACEBOOK_VALUE}" target="_blank"><img src="http://i.imgur.com/HKm84EE.png" alt="Facebook"></a></span><!-- ENDIF -->
+<!-- IF S_PROFILE_TWITTER --><span><a href="https://twitter.com/{PROFILE_TWITTER_VALUE}" target="_blank"><img src="http://i.imgur.com/nu1Bwfu.png" alt="Twitter"></a></span><!-- ENDIF -->
+<!-- IF S_PROFILE_YOUTUBE --><span><a href="https://youtube.com/{PROFILE_YOUTUBE_VALUE}" target="_blank"><img src="http://i.imgur.com/Htafvle.png" alt="YouTube"></a></span><!-- ENDIF -->
+<!-- IF S_PROFILE_TUMBLR --><span><a href="http://{PROFILE_TUMBLR_VALUE}.tumblr.com/" target="_blank"><img src="http://i.imgur.com/UYOmI7g.png" alt="Tumblr"></a></span><!-- ENDIF -->
+<!-- IF U_WWW --><span><a href="{U_WWW}" title="{L_VISIT_WEBSITE}: {U_WWW}" target="_blank"><img src="http://i.imgur.com/bdGimy1.png" alt="Website"></a></span><!-- ENDIF -->
+<!-- IF S_PROFILE_NNID --><span><a href="https://miiverse.nintendo.net/users/{PROFILE_NNID_VALUE}" target="_blank"><img src="http://i.imgur.com/t6Gz6Hf.png" alt="Miiverse"></a></span><!-- ENDIF -->
+<!-- IF S_PROFILE_STEAM --><span><a href="http://steamcommunity.com/id/{PROFILE_STEAM_VALUE}" target="_blank"><img src="http://i.imgur.com/KAWtMnK.png" alt="Steam"></a></span><!-- ENDIF -->
+<!-- IF S_PROFILE_TRUEACHIEVEMENTS --><span><a href="https://www.trueachievements.com/gamer/{PROFILE_TRUEACHIEVEMENTS_VALUE}" target="_blank"><img src="http://i.imgur.com/lYjxL3n.png" alt="TrueAchievements"></a></span><!-- ENDIF -->
+<!-- IF S_PROFILE_MYPST --><span><a href="http://mypst.com.br/rank/{PROFILE_MYPST_VALUE}/#!perfil"><img src="http://i.imgur.com/AEfieXQ.png" alt="MyPST"></a></span><!-- ENDIF -->
+</dl>
+</div>
+<!--outros contatos-->
+<div class="profilecont" style="width:640px;float:right">
+<div class="englobaprof">
+<dt><span style="color:#999999;">Badges</span> : </dt>
+<dl>
+<dd><div class="field_uneditable"><!-- IF S_PROFILE_BADGES -->{PROFILE_BADGES_VALUE}<!-- ENDIF --></div></dd>
+</dl>
+</div>
+
+<div class="englobaprof">
+<dt><span style="color:#999999;"><img src="./styles/prosilver/imageset/sobreicon.png" alt="Sobre mim"> Sobre mim</span> : </dt>
+<dl>
+<dd>{OCCUPATION}</dd>
+</dl>
+</div>
+
+<div class="englobaprof">
+<dt><span style="color:#999999;"><img src="./styles/prosilver/imageset/k.png" alt="Karma"> Karma</span> : </dt>
+<dl>
+<dd>{REPUTATION}</dd>
+</dl>
+</div>
+
+<div class="englobaprof">
+<dt><span style="color:#999999;"><img src="./styles/prosilver/imageset/simbolo_sg.png" alt="Posts"> Posts</span> : </dt>
+<dl>
+<dd style="display: table;">
+{POSTS}<br>({POSTS_PCT} / {POSTS_DAY})<br><!-- IF S_DISPLAY_SEARCH -->Listar: <a href="{U_SEARCH_USER}" style="display:inline-block;">Mensagens</a> / <a href="./search.php?keywords=&terms=all&author={USERNAME}&sc=1&sf=firstpost&sr=topics&sk=t&sd=d&st=0&ch=300&t=0&submit=Pesquisar">Tópicos</a><br><!-- ENDIF -->
+</dd>
+</dl>
+</div>
+
+<div class="englobaprof">
+<dt><span style="color:#999999;">Rupees</span> : </dt>
+<dl>
+<dd><!-- IF S_PROFILE_RUPEES -->{PROFILE_RUPEES_VALUE}<!-- ENDIF --></dd>
+</dl>
+</div>
+
+<div class="englobaprof">
+<dt><span style="color:#999999;">Histórico de Rupees</span> : </dt>
+<dl>
+<dd><!-- IF S_PROFILE_HISTORICO -->{PROFILE_HISTORICO_VALUE}<!-- ENDIF --></dd>
+</dl>
+</div>
+
+<!-- IF S_PROFILE_NNID -->
+<div class="englobaprof">
+<dt><span style="color:#999999;">Nintendo Network</span> : </dt>
+<dl>
+<dd>{PROFILE_NNID_VALUE}</dd>
+</dl>
+</div>
+<!-- ENDIF -->
+
+<!-- IF S_PROFILE_DSFC -->
+<div class="englobaprof">
+<dt><span style="color:#999999;">3DS Friend Code</span> : </dt>
+<dl>
+<dd>{PROFILE_DSFC_VALUE}</dd>
+</dl>
+</div>
+<!-- ENDIF -->
+
+<div class="englobaprof">
+<dt><span style="color:#999999;">Data de Inscrição</span> : </dt>
+<dl>
+<dd>{JOINED}</dd>
+</dl>
+</div>
+
+<!-- IF USER_GENDER -->
+<div class="englobaprof">
+<dt><span style="color:#999999;">Sexo</span> : </dt>
+<dl>
+<dd>{USER_GENDER_IMG}</dd>
+</dl>
+</div>
+<!-- ENDIF -->
+
+<div class="englobaprof">
+<dt><span style="color:#999999;">Data de nascimento</span> : </dt>
+<dl>
+<dd>{BIRTHDAY}</dd>
+</dl>
+</div>
+
+<div class="englobaprof">
+<dt><span style="color:#999999;">Idade</span> : </dt>
+<dl>
+<dd>{AGE}</dd>
+</dl>
+</div>
+
+<div class="englobaprof">
+<dt><span style="color:#999999;">Cidade</span> : </dt>
+<dl>
+<dd>{LOCATION}</dd>
+</dl>
+</div>
+
+<div class="englobaprof">
+<dt><span style="color:#999999;"><img src="http://i14.servimg.com/u/f14/14/34/68/04/simbol10.png" alt="Punição Nv."> Nº de Alertas</span> : </dt>
+<dl>
+<dd>{WARNINGS}</dd>
+</dl>
+</div>
+
+<div class="englobaprof">
+<dt><span style="color:#999999;">Última visita</span> : </dt>
+<dl>
+<dd>{VISITED}</dd>
+</dl>
+</div>
+
+
+</div>
+
+<!-- INCLUDE jumpbox.html -->
+
+<!-- INCLUDE overall_footer.html -->

@@ -1,0 +1,311 @@
+<!-- INCLUDE overall_header.html -->
+<!-- IF PRIME_MULTI_QUOTE -->
+	<script type="text/javascript" src="{T_TEMPLATE_PATH}/prime_multi_quote.js"></script>
+<!-- ENDIF -->
+<!-- IF U_MCP --><p>[&nbsp;<a href="{U_MCP}">{L_MCP}</a>&nbsp;]</p><!-- ENDIF -->
+<h2 class="topic-title"><a href="{U_VIEW_TOPIC}">{TOPIC_TITLE}</a></h2>
+<!-- IF TOPIC_DESC --><p>{TOPIC_DESC}</p><!-- ENDIF -->
+<div class="divisor">
+</div>
+<!-- NOTE: remove the style="display: none" when you want to have the forum description on the topic body -->
+<!-- IF FORUM_DESC --><div style="display: none !important;">{FORUM_DESC}<br /></div><!-- ENDIF -->
+
+<!-- IF MODERATORS -->
+<p>
+	<strong><!-- IF S_SINGLE_MODERATOR -->{L_MODERATOR}<!-- ELSE -->{L_MODERATORS}<!-- ENDIF -->:</strong> {MODERATORS}
+</p>
+<!-- ENDIF -->
+
+<!-- IF S_FORUM_RULES -->
+	<div class="rules">
+		<div class="inner"><span class="corners-top"><span></span></span>
+			{postrow.L_RS_HIDE_POST}
+
+		<!-- IF U_FORUM_RULES -->
+			<a href="{U_FORUM_RULES}">{L_FORUM_RULES}</a>
+		<!-- ELSE -->
+			<strong>{L_FORUM_RULES}</strong><br />
+			{FORUM_RULES}
+		<!-- ENDIF -->
+
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+<!-- ENDIF -->
+
+<div class="topic-actions">
+
+	<div class="buttons">
+	<!-- IF not S_IS_BOT and S_DISPLAY_REPLY_INFO -->
+	<a id="n-tpc-post" href="{U_POST_NEW_TOPIC}">
+		<!-- IF S_IS_LOCKED -->
+		<style>
+		/*não exibir dois botões se o tpc estiver trancado*/
+		#n-tpc-post{
+			display:none;
+		}
+		</style>
+		<!-- ELSE --><img src="./styles/prosilver/imageset/ninten19.png" style="margin-right: 5px;"><!-- ENDIF -->
+</a>
+		<a href="{U_POST_REPLY_TOPIC}" <!-- IF PRIME_MULTI_QUOTE --> onclick="prime_multi_quote(this);"<!-- ENDIF -->><span></span><!-- IF S_IS_LOCKED --><img src="./styles/prosilver/imageset/ninten54.png"><!-- ELSE --><img src="./styles/prosilver/imageset/ninten20.png"><!-- ENDIF --></a>
+	<!-- ENDIF -->
+	</div>
+
+<div class="lista-tpc">
+<a href="{U_INDEX}" accesskey="h" style="margin-left:12px;" class="tpc-idc">{L_INDEX}</a> <!-- BEGIN navlinks --> <a href="{navlinks.U_VIEW_FORUM}" class="tpc-idc">{navlinks.FORUM_NAME}</a><!-- END navlinks -->
+	<!-- IF PAGINATION or TOTAL_POSTS -->
+		<div class="pagination">
+			<!-- IF U_VIEW_UNREAD_POST and not S_IS_BOT --><a href="{U_VIEW_UNREAD_POST}">{L_VIEW_UNREAD_POST}</a> &bull; <!-- ENDIF -->{TOTAL_POSTS}
+			<!-- IF PAGE_NUMBER --><!-- IF PAGINATION --> &bull; <a href="#" onclick="jumpto(); return false;" title="{L_JUMP_TO_PAGE}"><b>{PAGE_NUMBER}</b></a> &bull; <span>{PAGINATION}</span><!-- ELSE --> &bull; <b>{PAGE_NUMBER}</b><!-- ENDIF --><!-- ENDIF -->
+		</div>
+	<!-- ENDIF -->
+</div>
+
+</div>
+
+<div class="nav-bt">
+<a href="{U_INDEX}"><img src="./styles/prosilver/imageset/ninten48.png"/></a>
+<a href="#top"><img src="./styles/prosilver/imageset/ninten47.png" style="transform: rotate(180deg);"/></a>
+<a href="#bottom"><img src="./styles/prosilver/imageset/ninten47.png"/></a>
+</div>
+
+<div class="clear"></div>
+
+<!-- IF S_HAS_POLL -->
+	<form method="post" action="{S_POLL_ACTION}">
+
+	<div class="panel">
+		<div class="inner"><span class="corners-top"><span></span></span>
+
+		<div class="content">
+			<h2>{POLL_QUESTION}</h2>
+			<p class="author">{L_POLL_LENGTH}<!-- IF S_CAN_VOTE and L_POLL_LENGTH --><br /><!-- ENDIF --><!-- IF S_CAN_VOTE -->{L_MAX_VOTES}<!-- ENDIF --></p>
+
+			<fieldset class="polls">
+			<!-- BEGIN poll_option -->
+				<dl class="<!-- IF poll_option.POLL_OPTION_VOTED -->voted<!-- ENDIF -->"<!-- IF poll_option.POLL_OPTION_VOTED --> title="{L_POLL_VOTED_OPTION}"<!-- ENDIF -->>
+					<dt><!-- IF S_CAN_VOTE --><label for="vote_{poll_option.POLL_OPTION_ID}">{poll_option.POLL_OPTION_CAPTION}</label><!-- ELSE -->{poll_option.POLL_OPTION_CAPTION}<!-- ENDIF --></dt>
+					<!-- IF S_CAN_VOTE --><dd style="width: auto;"><!-- IF S_IS_MULTI_CHOICE --><input type="checkbox" name="vote_id[]" id="vote_{poll_option.POLL_OPTION_ID}" value="{poll_option.POLL_OPTION_ID}"<!-- IF poll_option.POLL_OPTION_VOTED --> checked="checked"<!-- ENDIF --> /><!-- ELSE --><input type="radio" name="vote_id[]" id="vote_{poll_option.POLL_OPTION_ID}" value="{poll_option.POLL_OPTION_ID}"<!-- IF poll_option.POLL_OPTION_VOTED --> checked="checked"<!-- ENDIF --> /><!-- ENDIF --></dd><!-- ENDIF -->
+					<!-- IF S_DISPLAY_RESULTS --><dd class="resultbar"><div class="<!-- IF poll_option.POLL_OPTION_PCT < 20 -->pollbar1<!-- ELSEIF poll_option.POLL_OPTION_PCT < 40 -->pollbar2<!-- ELSEIF poll_option.POLL_OPTION_PCT < 60 -->pollbar3<!-- ELSEIF poll_option.POLL_OPTION_PCT < 80 -->pollbar4<!-- ELSE -->pollbar5<!-- ENDIF -->" style="width:{poll_option.POLL_OPTION_PERCENT};">{poll_option.POLL_OPTION_RESULT}</div></dd>
+					<dd><!-- IF poll_option.POLL_OPTION_RESULT == 0 -->{L_NO_VOTES}<!-- ELSE -->{poll_option.POLL_OPTION_PERCENT}<!-- ENDIF --></dd><!-- ENDIF -->
+				</dl>
+			<!-- END poll_option -->
+
+			<!-- IF S_DISPLAY_RESULTS -->
+				<dl>
+					<dt>&nbsp;</dt>
+					<dd class="resultbar">{L_TOTAL_VOTES} : {TOTAL_VOTES}</dd>
+				</dl>
+			<!-- ENDIF -->
+
+			<!-- IF S_CAN_VOTE -->
+				<dl style="border-top: none;">
+					<dt>&nbsp;</dt>
+					<dd class="resultbar"><input type="submit" name="update" value="{L_SUBMIT_VOTE}" class="button1" /></dd>
+				</dl>
+			<!-- ENDIF -->
+
+			<!-- IF not S_DISPLAY_RESULTS -->
+				<dl style="border-top: none;">
+					<dt>&nbsp;</dt>
+					<dd class="resultbar"><a href="{U_VIEW_RESULTS}">{L_VIEW_RESULTS}</a></dd>
+				</dl>
+			<!-- ENDIF -->
+			</fieldset>
+		</div>
+
+		<span class="corners-bottom"><span></span></span></div>
+		{S_FORM_TOKEN}
+		{S_HIDDEN_FIELDS}
+	</div>
+
+
+	</form>
+	<hr />
+<!-- ENDIF -->
+
+<script type="text/javascript">
+	var form_name = 'qr';
+	var text_name = 'message';
+</script>
+<script type="text/javascript" src="{T_SUPER_TEMPLATE_PATH}/editor.js"></script>
+
+<!-- IF PRIME_MULTI_QUOTE --><form action="{U_POST_REPLY_TOPIC}" method="get" name="prime_multi_quote_form" id="prime_multi_quote_form"><!-- ENDIF -->
+
+<!-- BEGIN postrow -->
+	<!-- IF postrow.S_FIRST_UNREAD --><a id="unread"></a><!-- ENDIF -->
+	<div id="p{postrow.POST_ID}" class="post <!-- IF postrow.S_ROW_COUNT is odd -->bg1<!-- ELSE -->bg2<!-- ENDIF --><!-- IF postrow.S_UNREAD_POST --> unreadpost<!-- ENDIF --><!-- IF postrow.S_POST_REPORTED --> reported<!-- ENDIF -->">
+		<div class="inner">
+
+		<div class="postbody">
+			<!-- IF postrow.S_IGNORE_POST -->
+				<div class="ignore">{postrow.L_IGNORE_POST}</div>
+			<!-- ELSE -->
+		<!-- IF not S_IS_BOT -->
+			<!-- IF postrow.U_EDIT or postrow.U_DELETE or postrow.U_REPORT or postrow.U_WARN or postrow.U_INFO or postrow.U_QUOTE -->
+				<ul class="profile-icons">
+					<!-- IF postrow.U_QUOTE --><li style="float:left;"><a href="{postrow.U_QUOTE}" title="Responder com citação" <!-- IF PRIME_MULTI_QUOTE --> onclick="prime_multi_quote(this);"<!-- ENDIF -->><img src="./styles/prosilver/imageset/ninten12.png"/></a></li><!-- ENDIF -->
+					<!-- IF PRIME_MULTI_QUOTE --><li style="background:url(./styles/prosilver/imageset/multiqupte.png);background-repeat:no-repeat;width:31px;height:18px;list-style:none;"><input type="checkbox" name="quotes" value="{postrow.POST_ID}" class="radio" title="{L_REPLY_WITH_QUOTE}" style="margin-top: 3px;margin-left: 3px;"/></li><!-- ENDIF -->
+					<!-- IF postrow.U_EDIT --><li style="float:left;"><a href="{postrow.U_EDIT}" title="Editar mensagem"><img src="./styles/prosilver/imageset/ninten17.png"/></a></li><!-- ENDIF -->
+					<!-- IF postrow.U_DELETE --><li style="float:left;"><a href="{postrow.U_DELETE}" title="Excluir mensagem"><img src="./styles/prosilver/imageset/ninten18.png"/></a></li><!-- ENDIF -->
+					<!-- IF postrow.U_INFO --><li style="float:left;"><a href="{postrow.U_INFO}" title="Ver IP do usuário"><img src="./styles/prosilver/imageset/ninten15.png"/></li><!-- ENDIF -->
+					<!-- IF postrow.U_REPORT --><li style="float:left;"><a href="{postrow.U_REPORT}" title="Enviar um alerta á um moderador"><img src="./styles/prosilver/imageset/ninten16.png"/></a></li><!-- ENDIF -->
+					<!-- IF postrow.U_WARN --><li style="float:left;"><a href="{postrow.U_WARN}" title="Alertar o usuário (apenas mods)"><img src="./styles/prosilver/imageset/ninten69.png"/></a></li><!-- ENDIF -->
+<!-- IF S_REPUTATION-->
+					<ul class="post-reputation<!-- IF postrow.RS_POST_CLASS --> {postrow.RS_POST_CLASS}<!-- ENDIF -->" style="<!-- IF not S_USER_LOGGED_IN --> display:none;<!-- ENDIF -->">
+						<li class="rate-good-icon"><!-- IF postrow.S_GIVE_REPUTATION --><a style="background: none;" href="#" onclick="jRS.positive('{postrow.POST_ID}', event, this); return false;" <!-- IF postrow.RS_GIVEN_POINT gt 0 -->class="{postrow.RS_POST_CLASS}" title="{L_RS_YOU_RATED} {postrow.RS_GIVEN_POINT}"<!-- ELSE --> title="{L_RS_RATE_POST}"<!-- ENDIF -->><img src="./styles/prosilver/imageset/karmaup4.png"/></a><!-- ENDIF --></li>
+						<li style="margin-top: 5.5px;margin-bottom: 8px;" class="reputation {postrow.RS_BOX_COLOR}"><div title="{L_RS_POST_REPUTATION}"><!-- IF postrow.S_VIEW_REPUTATION --><a href="#" onclick="jRS.postdetails('{postrow.POST_ID}'); return false;"><!-- ENDIF -->+ {postrow.POST_REPUTATION}<!-- IF postrow.S_VIEW_REPUTATION --></a><!-- ENDIF --></div></li>
+					</ul>
+					<br />
+<!-- ENDIF -->
+				</ul>
+			<!-- ENDIF -->
+		<!-- ENDIF -->
+
+			<h3 <!-- IF postrow.S_FIRST_ROW -->class="first"<!-- ENDIF -->><!-- IF postrow.POST_ICON_IMG --><img src="{T_ICONS_PATH}{postrow.POST_ICON_IMG}" width="{postrow.POST_ICON_IMG_WIDTH}" height="{postrow.POST_ICON_IMG_HEIGHT}" alt="" /> <!-- ENDIF --><a href="#p{postrow.POST_ID}">{postrow.POST_SUBJECT}</a></h3>
+			<p class="author"><!-- IF S_IS_BOT -->{postrow.MINI_POST_IMG}<!-- ELSE --><a href="{postrow.U_MINI_POST}">{postrow.MINI_POST_IMG}</a><!-- ENDIF -->{L_POST_BY_AUTHOR} <strong>{postrow.POST_AUTHOR_FULL}</strong> &raquo; {postrow.POST_DATE} </p>
+
+			<!-- IF postrow.S_POST_UNAPPROVED or postrow.S_POST_REPORTED -->
+				<p class="rules">
+					<!-- IF postrow.S_POST_UNAPPROVED -->{UNAPPROVED_IMG} <a href="{postrow.U_MCP_APPROVE}"><strong>{L_POST_UNAPPROVED}</strong></a><br /><!-- ENDIF -->
+					<!-- IF postrow.S_POST_REPORTED -->{REPORTED_IMG} <a href="{postrow.U_MCP_REPORT}"><strong>{L_POST_REPORTED}</strong></a><!-- ENDIF -->
+				</p>
+			<!-- ENDIF -->
+
+			<div class="content">{postrow.MESSAGE}</div>
+
+			<!-- IF postrow.S_HAS_ATTACHMENTS -->
+				<dl class="attachbox">
+					<dt>{L_ATTACHMENTS}</dt>
+					<!-- BEGIN attachment -->
+						<dd>{postrow.attachment.DISPLAY_ATTACHMENT}</dd>
+					<!-- END attachment -->
+				</dl>
+			<!-- ENDIF -->
+
+			<!-- IF postrow.S_DISPLAY_NOTICE --><div class="rules">{L_DOWNLOAD_NOTICE}</div><!-- ENDIF -->
+			<!-- IF postrow.EDITED_MESSAGE or postrow.EDIT_REASON -->
+				<div class="notice">{postrow.EDITED_MESSAGE}
+					<!-- IF postrow.EDIT_REASON --><br /><strong>{L_REASON}:</strong> <em>{postrow.EDIT_REASON}</em><!-- ENDIF -->
+				</div>
+			<!-- ENDIF -->
+
+			<!-- IF postrow.BUMPED_MESSAGE --><div class="notice"><br /><br />{postrow.BUMPED_MESSAGE}</div><!-- ENDIF -->
+			<!-- IF postrow.SIGNATURE --><div id="sig{postrow.POST_ID}" class="signature">{postrow.SIGNATURE}</div><!-- ENDIF -->
+		<!-- ENDIF -->
+
+		</div>
+		<!-- IF not postrow.S_IGNORE_POST -->
+			<dl class="postprofile<!-- IF postrow.S_ONLINE and not postrow.S_IGNORE_POST --> online<!-- ENDIF --><!-- IF S_REPUTATION --><!-- IF postrow.S_RS_POST_HIGHLIGHT --> highlight<!-- ENDIF --><!-- IF postrow.S_RS_HIDE_POST --> hidden<!-- ENDIF --><!-- ENDIF -->" id="profile{postrow.POSTER_ID}">
+				<!-- IF postrow.POSTER_AVATAR -->
+					<!-- IF postrow.U_POST_AUTHOR --><a href="{postrow.U_POST_AUTHOR}" class="avatarz">{postrow.POSTER_AVATAR}</a><!-- ELSE -->{postrow.POSTER_AVATAR}<!-- ENDIF --><br />
+				<!-- ENDIF -->
+				<!-- IF S_REPUTATION --><!-- IF postrow.S_RS_POST_HIGHLIGHT --> highlight<!-- ENDIF --><!-- IF postrow.S_RS_HIDE_POST --> hidden<!-- ENDIF --><!-- ENDIF -->
+<aside>
+			<dt style="font-size: 1.25em;">
+				<!-- IF not postrow.U_POST_AUTHOR --><strong>{postrow.POST_AUTHOR_FULL}</strong><!-- ELSE -->{postrow.POST_AUTHOR_FULL}<!-- ENDIF -->
+			</dt>
+
+			<!-- IF postrow.RANK_TITLE or postrow.RANK_IMG --><dd style="font-size: 11px;" class="rankz">{postrow.RANK_TITLE}<!-- IF postrow.RANK_TITLE and postrow.RANK_IMG --><br /><!-- ENDIF -->{postrow.RANK_IMG}</dd><!-- ENDIF -->
+
+		<dd>&nbsp;</dd>
+		<!-- IF S_REPUTATION and postrow.U_POST_AUTHOR -->
+			<dd class="user-reputation" style="font-size:11px;"><img src="./styles/prosilver/imageset/k.png" style="margin:0;border-radius:0;box-shadow:none;width:auto;border-top:0;"/> <span style="color: #999999;">Karma:</span> <!-- IF postrow.S_VIEW_REPUTATION --><a href="#" onclick="jRS.userdetails('{postrow.POSTER_ID}', '{postrow.POST_ID}'); return false;"><!-- ENDIF --><strong>{postrow.U_REPUTATION}</strong><!-- IF postrow.S_VIEW_REPUTATION --></a><!-- ENDIF --></dd>
+		<!-- ENDIF -->
+		<!-- IF postrow.POSTER_POSTS != '' --><dd style="font-size: 11px;"><span style="color: #999999;"><img src="./styles/prosilver/imageset/simbolo_sg.png" style="margin:0;border-radius:0;box-shadow:none;width:auto;border-top:0;"/> Posts:</span> <span style="color:#000">{postrow.POSTER_POSTS}</span></dd><!-- ENDIF -->
+
+		<!-- IF postrow.S_PROFILE_FIELD1 -->
+			<!-- Use a construct like this to include admin defined profile fields. Replace FIELD1 with the name of your field. -->
+			<dd><strong>{postrow.PROFILE_FIELD1_NAME}:</strong> {postrow.PROFILE_FIELD1_VALUE}</dd>
+		<!-- ENDIF -->
+
+		<!-- IF not S_IS_BOT -->
+		<!-- IF postrow.U_PM or postrow.U_EMAIL or postrow.U_WWW or postrow.U_MSN or postrow.U_ICQ or postrow.U_YIM or postrow.U_AIM or postrow.U_JABBER or postrow.S_PROFILE_STEAM -->
+			<dd>
+				<ul class="profile-icons">
+					<!-- IF S_QUICK_REPLY and postrow.U_POST_AUTHOR --><li class="mention-icon"><a href="#" onclick="insert_username('{postrow.POST_AUTHOR}'); return false;" title="{L_USER_MENTION}"><span>{L_USER_MENTION}</span></a></li><!-- ENDIF -->
+					<!-- IF postrow.U_PM --><li style="float:left;"><a href="{postrow.U_PM}" title="{L_PRIVATE_MESSAGE}"><img style="border-top:none;" src="./styles/prosilver/imageset/mpicon12.png"/></a></li><!-- ENDIF -->
+					<!-- IF postrow.U_EMAIL --><li style="float:left;"><a href="{postrow.U_EMAIL}" title="{L_SEND_EMAIL_USER} {postrow.POST_AUTHOR}"><img style="border-top:none;" src="./styles/prosilver/imageset/aticon11.png"/></a></li><!-- ENDIF -->
+					<a href="./memberlist.php?mode=viewprofile&u={postrow.POSTER_ID}"><li class="plus-cont" style="cursor:pointer;" alt="Mais contatos"></li></a>
+				</ul>
+			</dd>
+		<!-- ENDIF -->
+		<!-- ENDIF -->
+		</dl>
+	<!-- ENDIF -->
+	</aside>
+
+		<div class="back2top"><a href="#wrap" class="top" title="{L_BACK_TO_TOP}">{L_BACK_TO_TOP}</a></div>
+
+		</div>
+	</div>
+
+	<hr class="divider" />
+<!-- END postrow -->
+<!-- IF PRIME_MULTI_QUOTE --></form><!-- ENDIF -->
+<!-- IF U_WATCH_TOPIC --><li style="list-style:none;float:right;font-size:11.5px;"><a href="{U_WATCH_TOPIC}" title="{L_WATCH_TOPIC}">{L_WATCH_TOPIC}</a></li><!-- ENDIF -->
+<!-- IF S_QUICK_REPLY -->
+	<!-- INCLUDE quickreply_editor.html -->
+<!-- ENDIF -->
+<!-- IF S_NUM_POSTS > 1 or PREVIOUS_PAGE -->
+	<form id="viewtopic" method="post" action="{S_TOPIC_ACTION}">
+
+	<fieldset class="display-options" style="margin-top: 0; ">
+		<!-- IF PREVIOUS_PAGE --><a href="{PREVIOUS_PAGE}" class="left-box {S_CONTENT_FLOW_BEGIN}">{L_PREVIOUS}</a><!-- ENDIF -->
+		<!-- IF NEXT_PAGE --><a href="{NEXT_PAGE}" class="right-box {S_CONTENT_FLOW_END}">{L_NEXT}</a><!-- ENDIF -->
+		<!-- IF not S_IS_BOT -->
+		<label>{L_DISPLAY_POSTS}: {S_SELECT_SORT_DAYS}</label>
+		<label>{L_SORT_BY} {S_SELECT_SORT_KEY}</label> <label>{S_SELECT_SORT_DIR} <input type="submit" name="sort" value="{L_GO}" class="button2" /></label>
+		<!-- ENDIF -->
+	</fieldset>
+
+	</form>
+	<hr />
+<!-- ENDIF -->
+
+<div class="topic-actions">
+<div class="buttons">
+	<!-- IF not S_IS_BOT and S_DISPLAY_REPLY_INFO -->
+	<a id="n-tpc-post" href="{U_POST_NEW_TOPIC}">
+		<!-- IF S_IS_LOCKED -->
+		<style>
+		/*não exibir dois botões se o tpc estiver trancado*/
+		#n-tpc-post{
+			display:none;
+		}
+		</style>
+		<!-- ELSE --><img src="./styles/prosilver/imageset/ninten19.png" style="margin-right: 5px;"><!-- ENDIF -->
+</a>
+		<a href="{U_POST_REPLY_TOPIC}" <!-- IF PRIME_MULTI_QUOTE --> onclick="prime_multi_quote(this);"<!-- ENDIF -->><span></span><!-- IF S_IS_LOCKED --><img src="./styles/prosilver/imageset/ninten54.png"><!-- ELSE --><img src="./styles/prosilver/imageset/ninten20.png"><!-- ENDIF --></a>
+	<!-- ENDIF -->
+</div>
+
+	<!-- IF PAGINATION or TOTAL_POSTS -->
+		<div class="pagination">
+			{TOTAL_POSTS}
+			<!-- IF PAGE_NUMBER --><!-- IF PAGINATION --> &bull; <a href="#" onclick="jumpto(); return false;" title="{L_JUMP_TO_PAGE}">{PAGE_NUMBER}</a> &bull; <span>{PAGINATION}</span><!-- ELSE --> &bull; {PAGE_NUMBER}<!-- ENDIF --><!-- ENDIF -->
+		</div>
+	<!-- ENDIF -->
+</div>
+<div class="nav-bt">
+<a href="{U_INDEX}"><img src="./styles/prosilver/imageset/ninten48.png"/></a>
+<a href="#top"><img src="./styles/prosilver/imageset/ninten47.png" style="transform: rotate(180deg);"/></a>
+<a href="#bottom"><img src="./styles/prosilver/imageset/ninten47.png"/></a>
+</div>
+
+<!-- INCLUDE jumpbox.html -->
+
+<!-- IF S_TOPIC_MOD -->
+	<form method="post" action="{S_MOD_ACTION}">
+	<fieldset class="quickmod">
+		<label for="quick-mod-select">{L_QUICK_MOD}:</label> {S_TOPIC_MOD} <input type="submit" value="{L_GO}" class="button2" />
+		{S_FORM_TOKEN}
+	</fieldset>
+	</form>
+<!-- ENDIF -->
+
+<!-- IF S_DISPLAY_ONLINE_LIST -->
+	<h3><!-- IF U_VIEWONLINE --><a href="{U_VIEWONLINE}">{L_WHO_IS_ONLINE}</a><!-- ELSE -->{L_WHO_IS_ONLINE}<!-- ENDIF --></h3>
+	<p>{LOGGED_IN_USER_LIST}</p>
+<!-- ENDIF -->
+
+<!-- INCLUDE overall_footer.html -->

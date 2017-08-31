@@ -1,0 +1,75 @@
+<!-- INCLUDE stats/stats_header.html -->
+<!--version $Id: stats_basic_basic.html 162 2010-12-11 13:29:18Z marc1706 $ //-->
+<!-- copyright (c) 2009 - 2010 Marc Alexander(marc1706) www.m-a-styles.de, (c) TheUniqueTiger - Nayan Ghosh //-->
+<!-- IF not S_BASIC_BASIC_DISABLED -->
+<h2>Estatísicas</h2>
+
+<div class="panel">
+	<div class="inner_fs"><span class="corners-top"><span></span></span>
+	<h3>Geral</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">Total de Posts:</td><td class="col2">{TOTAL_POSTS}</td>
+			<td class="col3">Total de Tópicos:</td><td class="col4">{TOTAL_TOPICS}</td>
+		</tr>		
+		<tr>
+			<td class="col1">Total de Usuários:</td> <td class="col2">{TOTAL_USERS}</td>
+			<td class="col3">Total de Fóruns:</td> <td class="col4">{TOTAL_FORUMS}</td>
+		</tr>
+		<tr>
+			<td class="col1">Total de Enquetes:</td> <td class="col4">{TOTAL_POLLS}</td>
+		</tr>
+		<tr>
+			<td class="col1">Total de Visualizações:</td> <td class="col2">{TOTAL_VIEWS}</td>
+			<td class="col3">Recorde de Usuários Online:</td> <td class="col4" colspan="3">{MOST_ONLINE} (em {MOST_ONLINE_DATE})</td>
+		</tr>
+	</table><br />
+	<h3>Médias</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">Média de Mensagens por dia:</td><td class="col2">{AVG_POSTS_PER_DAY}</td>
+			<td class="col3">Média de Tópicos por dia:</td><td class="col4">{AVG_TOPICS_PER_DAY}</td>
+		</tr>		
+		<tr>
+			<td class="col1">Média de Registros por dia:</td> <td class="col2">{AVG_USERS_PER_DAY}</td>
+		</tr>		
+	</table><br />
+	<h3>Fóruns</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">Número de Categorias:</td> <td class="col2">{TOTAL_FORUM_CAT}</td>
+			<td class="col3">Total de Fóruns:</td> <td class="col4">{TOTAL_FORUM_POST}</td>			
+		</tr>
+		<tr>
+			<td class="col1">Total de Fóruns Link:</td> <td class="col2">{TOTAL_FORUM_LINK}</td>
+		</tr>
+	</table><br />
+	<h3>Tópicos</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">Total de Tópicos Normais:</td> <td class="col2">{TOPIC_TYPES_NORMAL}</td>
+			<td class="col3">Total de Tópicos Fixos:</td> <td class="col4">{TOPIC_TYPES_STICKY}</td>			
+		</tr>
+		<tr>
+			<td class="col1">Total de Tópicos Globais:</td> <td class="col2">{TOPIC_TYPES_GLOBAL}</td>
+			<td class="col3">Toal de Anúncios:</td> <td class="col4">{TOPIC_TYPES_ANNOUNCE}</td>			
+		</tr>
+	</table><br />
+	<h3>{L_USERS}</h3>
+	<table class="fs_details_list">
+		<tr>
+			<td class="col1">Total de Usuários Ativos:<br /><small>({USERS_ACTIVE_EXPLAIN})</small></td> <td class="col2">{USERS_ACTIVE}</td>
+			<td class="col3">Total de Usuários Inativos:<br /><small>(Usuários ausentes pro 30 dias)</small></td> <td class="col4">{USERS_INACTIVE}</td>
+		</tr>
+		<tr>
+			<td class="col1">Total de Bots:</td> <td class="col2">{TOTAL_BOTS}</td>
+			<td class="col3">Total de Bots Ativos:</td> <td class="col4">{VISITED_BOTS}</td>
+		</tr>
+	</table><br />
+	<hr /><div style="text-align:right;"><span><i>Atualizado</i></span></div>
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+<!-- ELSE -->
+	<!-- INCLUDE stats/stats_disabled.html -->
+<!-- ENDIF -->
+<!-- INCLUDE stats/stats_footer.html -->

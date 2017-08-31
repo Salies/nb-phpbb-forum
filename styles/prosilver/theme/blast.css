@@ -1,0 +1,826 @@
+.avatarz img{
+  margin: 6px 0 0px -15px;
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  width: 120px;
+  max-width: none;
+}
+
+.rankz img{
+	box-shadow:none;border-radius: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;margin-left: -22px;max-width: none;
+}
+
+.rankz{
+	color:#999;
+	margin-top: -1px;
+}
+
+#sidebar{
+  float:right;
+}
+
+.sidebar-ad{
+  width:300px;
+  height:250px;
+  background:#fff;
+  box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+  margin-bottom: 15px;
+}
+
+.sidebar-ad:hover{
+  box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
+}
+
+.sidebar-last{
+  position: relative;
+  width:300px;
+  height:330px;
+  padding-bottom: 15px;
+  background:#fff;
+  margin-bottom: 15px;
+}
+
+.sidebar-log {
+    position: relative;
+    width: 270px;
+    height: 120px;
+    background: #fff;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+    font-family: Arial,sans-serif;
+}
+
+.sidebar-log:hover{
+  box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
+}
+
+.bemv {
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0;
+    color: #CF1F25;
+    margin-bottom: 5px;
+    padding-top:10px;
+}
+
+.sidebar-like{
+  width:300px;
+  height: 105px;
+  background:#fff;
+  margin-bottom: 15px;
+  box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+}
+
+.sidebar-blog{
+  width:300px;
+  height:280px;
+  background:#fff;
+  margin-bottom: 15px;
+  box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+}
+
+.barra-assuntos{
+  width:300px;
+  height:25px;
+  background:url(http://i.imgur.com/NzOTS97.png) #fff;
+  background-repeat: no-repeat;
+  font-size: 12px;
+  color: #fff;
+  font-family: Arial;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align:left;
+}
+
+.barra-assuntos aside{
+  padding-top:6.5px;
+  padding-left:15px;"
+}
+
+/*karmas*/
+
+#recent-widget tbody{
+  border-color:transparent;
+}
+
+.topic-ultimos{
+  color:#888;
+  font-size:11px;
+}
+
+/*FUNDOS PERSONALIZADOS*/
+#fundo-clique{
+  cursor:pointer;
+  position: absolute;
+  right: 0;
+  padding:10px;
+  z-index:14;
+  top: 30px;
+}
+
+.fundo-bloco{
+  position:absolute;
+  z-index: 1;
+  right: 0;
+  top: 75px;
+  display:none;
+  width:415px;
+  height:450px;
+  padding:10px;
+  background:#e5e5e5;
+  border-radius:5px;
+  border:5px solid #555;
+  font-family:Arial, sans-serif;
+  z-index:14;
+}
+
+.fundo-bloco span{
+  display:block;
+  font-size:20px;
+  font-weight:700;
+}
+
+.fundo-demo{
+  width:115px;
+  height:75px;
+  background:red;
+  margin-top:15px;
+  margin-right:15px;
+  float:left;
+  box-shadow: 0 1px 3px -1px rgba(0,0,0,0.75);
+  cursor:pointer;
+}
+
+.fundo-demo:hover{
+  box-shadow: 0 1px 6px -1px rgba(34, 147, 215, 1);
+}
+
+#fundo-campo{
+  margin-top:10px;
+  width:375px;
+  height:30px;
+  margin-right:5px;
+}
+
+.fundo-botao {
+  display:block;
+  margin-top:10px;
+	background-color:#2dabf9;
+	border-radius:5px;
+	border:1px solid #0b0e07;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:18px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+  width: 60px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left:5px;
+}
+
+.fundo-botao:hover {
+  background:#0688fa;
+}
+
+/*paginas de perfil*/
+
+.perf-banner{
+  background: #CF1F25 url(./images/fundoperf.png);
+  width: 785px;
+  margin: -15px -15px 0;
+  display: flex;
+  min-height: 120px;
+  position: relative;
+  box-shadow: inset 0px 120px 120px -90px #CF1F25;
+}
+
+.profileactions {
+    position: absolute;
+    bottom: 15px;
+    right: 18px;
+    width: 470px;
+    color: #fff;
+    text-align: right;
+}
+
+.profileactions a{
+    color: #000;
+    line-height: 30px;
+    padding: 5px 15px;
+    background: #fff;
+    border: 1px solid;
+    border-radius: 2px;
+    font-size: 11px;
+    text-decoration:none;
+    font-weight:700;
+    vertical-align: top;
+    margin-right:15px;
+}
+
+.rankprofile{
+   float:left;
+   margin-top: 5px;
+   margin-right: 0px;
+   margin-bottom: 0px;
+   margin-left: 20px;
+   width: 120px;
+}
+
+.profilestatus {
+    text-align: center;
+    border-radius: 10px;
+    background: #000;
+    padding: 3px 25px;
+    color: #fff;
+    font-size: 12px;
+    margin-left: 10px;
+    position: relative;
+    top: -5px;
+    display:inline-block;
+}
+
+.profilecontact{
+  margin-top:20px;
+  width:640px;
+  float:right;
+  padding-bottom: 15px;
+}
+
+.profilecontact span{
+  padding-right:15px;
+  cursor:pointer;
+}
+
+.profilenob{
+  text-align: center!important;
+  border-radius: 10px;
+  background: #eee;
+  padding: 3px 0;
+  float:left;
+  width:121px;
+  color:#999;
+  font-size: 12px;
+  margin-right: 19px;
+}
+
+.profilecontact dl {
+    padding: 0px 10px 15px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 16px;
+    color: #ccc;
+    border-bottom: 1px solid #eee;
+}
+
+.profilecont dt {
+    text-align: center!important;
+    border-radius: 10px;
+    background: #eee;
+    padding: 3px 0;
+    float: left;
+    width: 121px;
+    color: #999;
+    font-size: 12px;
+    margin-right: 19px;
+}
+
+.profilecont dd {
+    font-size: 14px;
+    padding: 1px 0 15px!important;
+    line-height: 19px;
+    border-bottom: 1px solid #eee;
+    width: 470px;
+    margin-left:-30px;
+    display: flex;
+    color:#000;
+}
+
+.online img:first-child{
+  border-top: 5px solid rgb(0, 184, 0);
+}
+
+.englobaprof{
+  margin-top:10px;
+}
+
+.offline-z::before {
+  content: "desconectado ";
+}
+
+.online-z::before {
+  content: "conectado ";
+}
+
+/*amigos*/
+
+.painel-amigos {
+    margin-bottom: 20px;
+    padding-top: 0px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    color: #28313F;
+    border-bottom: 1px solid #eee;
+}
+
+.amigo-area{
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 1px solid #eee;
+}
+
+a.thumbnail{
+  float: left;
+  margin-right: 12px;
+  padding-right: 12px;
+  border-right: 1px solid #ddd;
+}
+
+/*aeroblast tweaks*/
+.reputation.zero{
+  display:none;
+}
+.reputation.positive{
+  background: #59BC10;
+  border: #59BC10 solid 1px;
+  color: white;
+  font-weight: 700;
+  height: 18px;
+  padding: 2px 4px 0 0;
+  text-align: center;
+  width: 38px;
+  border-radius:0;
+}
+
+ul.post-reputation{
+	float:right;
+	width:38px;
+}
+
+ul.post-reputation img{
+	max-width:none;
+}
+
+
+/*karmas original*/
+/**
+*
+* @package	Reputation System
+* @author	Pico88 (https://github.com/Pico88)
+* @copyright (c) 2012
+* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+*
+*/
+
+/* Highlight class - can be modified as you wish*/
+.highlight {
+	background-color: #d4f0cc !important;
+}
+
+ul.post-reputation {
+	padding: 0;
+	list-style: none;
+}
+
+ul.post-reputation li {
+	float: left;
+	margin-right: 3px;
+	background-position: 0 100%;
+}
+
+ul.post-reputation li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-position: 0 0;
+}
+
+ul.post-reputation li span { display:none; }
+ul.post-reputation li a:hover { background: none; }
+
+ul.post-reputation li.rate-good-icon { width: {IMG_ICON_RATE_GOOD_WIDTH}px; height: {IMG_ICON_RATE_GOOD_HEIGHT}px; }
+ul.post-reputation li.rate-bad-icon { width: {IMG_ICON_RATE_BAD_WIDTH}px; height: {IMG_ICON_RATE_BAD_HEIGHT}px; }
+
+ul.post-reputation li.rate-good-icon a { background-image: url("{IMG_ICON_RATE_GOOD_SRC}"); }
+ul.post-reputation li.rate-bad-icon a { background-image: url("{IMG_ICON_RATE_BAD_SRC}"); }
+
+ul.post-reputation li.rate-good-icon a:hover,
+ul.post-reputation li.rate-bad-icon a:hover { background-position: center bottom }
+
+.reputation.zero a {
+	color: #6E6E6E;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.reputation.positive a, .reputation.negative a {
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.reputation.negative {
+	background: #B82929;
+	color: white;
+	text-align: center;
+}
+
+.reputation.zero {
+	background: #FFF;
+	color: #6E6E6E;
+	text-align: center;
+}
+
+.reputation.span {
+	color: #FFF;
+}
+
+.reputation {
+	font-weight: bold;
+	padding: 1px 6px;
+	display: inline-block;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	line-height: normal;
+}
+
+li.reputation {
+	font-size: 14px;
+}
+
+.positive {
+	color: #6F8F52;
+}
+
+.negative {
+	color: #B82929;
+}
+
+.new-repo {
+	color: red;
+	font-weight: bold;
+}
+
+.rated_good .rate-good-icon a, .rated_bad .rate-bad-icon a {
+	width: 100%;
+	opacity: 0.3;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: alpha(opacity=30);
+	-moz-opacity:0.3;
+	-khtml-opacity: 0.3;
+	cursor: default;
+	background-position: center top !important;
+}
+
+.own .rate-good-icon a, .own .rate-bad-icon a {
+	opacity: 0.25;
+}
+
+.rated_good .rate-bad-icon a, .rated_bad .rate-good-icon a {
+	display: none;
+}
+
+#reputation-popup {
+	font-size: 0.9em;
+	z-index: 500;
+	display: none;
+	background: white;
+	box-shadow: 2px 2px 4px #555555;
+	padding: 5px;
+	border: 5px solid #12A3EB;
+}
+
+#reputation-popup div.error {
+	text-align: center;
+	font-size: 1.2em;
+}
+
+/* Fix - do not show white space at the bottom of reputation popup */
+#reputation-popup div.panel {
+	margin-bottom: 0px;
+}
+
+#reputation-popup h3 {
+	font-size: 1.4em;
+	padding-left: 10px;
+	text-transform: none;
+	font-family: "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+	margin: 0;
+	border: none;
+}
+
+#reputation-popup p {
+	padding: 0 10px;
+}
+
+#post-reputation-list {
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+}
+
+#user-reputation-list {
+	float: right;
+	width: 58%;
+}
+
+.small-popup {
+	position: absolute;
+	width: 300px;
+}
+
+.normal-popup {
+	position: fixed;
+	width: 570px;
+}
+
+.normal-popup #post-reputation-list {
+	max-height: 350px;
+	overflow: auto;
+}
+
+.new-popup {
+	position: fixed;
+	width: 400px;
+	height: 115px;
+	text-align: center;
+	position: fixed !important;
+}
+
+.footer-popup {
+	padding: 2px 10px 0 10px;
+}
+.vote_status_positive, .vote_status_negative {
+	text-align: center;
+	font-size: 120%;
+}
+
+.vote_status_positive {
+	background: #d4f0cc;
+}
+
+.vote_status_negative {
+	background: #ffe6e6;
+}
+
+.hidden  .postbody, .hidden .postprofile {
+	display: none;
+}
+
+div.online.hidden {
+	background-image: none;
+}
+
+.progress-bar {
+	width: 100%;
+	height: 10px;
+	border-radius: 3px;
+	border: 1px solid #a4bdcb;
+	background: #a4bdcb;
+	background: -moz-linear-gradient(left,  #dc4a5b 0%, #ffb489 8%, #fcfaba 18%, #54d077 70%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#dc4a5b), color-stop(8%,#ffb489), color-stop(18%,#fcfaba), color-stop(70%,#54d077));
+	background: -webkit-linear-gradient(left,  #dc4a5b 0%,#ffb489 8%,#fcfaba 18%,#54d077 70%);
+	background: -o-linear-gradient(left,  #dc4a5b 0%,#ffb489 8%,#fcfaba 18%,#54d077 70%);
+	background: -ms-linear-gradient(left,  #dc4a5b 0%,#ffb489 8%,#fcfaba 18%,#54d077 70%);
+	background: linear-gradient(to right,  #dc4a5b 0%,#ffb489 8%,#fcfaba 18%,#54d077 70%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dc4a5b', endColorstr='#54d077',GradientType=1 );
+}
+
+.empty-progress {
+	background: white;
+	height: 10px;
+	float: right;
+}
+
+.reputation-list {
+	border: 1px #dadada solid;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	display: block;
+	margin: 5px;
+	padding: 6px;
+	overflow: hidden;
+}
+
+.empty {
+	text-align: center;
+}
+
+.reputation-detail {
+	padding-left: 5px;
+}
+
+.reputation-avatar {
+	float: left;
+	padding: 2px;
+	background-color: white;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	border: 1px solid #D5D5D5;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.reputation-avatar  img{
+	display: block !important;
+}
+
+.reputation-rating {
+	display: block;
+	float: right;
+	font-weight: bold;
+	font-size: 1.4em;
+	padding-right: 10px;
+}
+
+.comment_message {
+	border: 1px #dadada solid;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	display: block;
+	margin: 5px;
+	background-color: white;
+	padding: 5px;
+	overflow: hidden;
+}
+
+.reputation-delete {
+	background-image: url("{T_THEME_PATH}/images/reputation_delete.png");
+	background-repeat: no-repeat;
+	font-size: 0px;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	float: right;
+	opacity: 0.3;
+}
+
+.reputation-delete:hover {
+	opacity: 1.0;
+}
+
+#post-reputation-list::-webkit-scrollbar {
+	height: 10px;
+	width: 10px;
+}
+
+#post-reputation-list::-webkit-scrollbar-button:start:decrement,
+#post-reputation-list::-webkit-scrollbar-button:end:increment  {
+	height: 5px;
+	display: block;
+	background-color: transparent;
+}
+
+#post-reputation-list::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+}
+
+#post-reputation-list::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+/*outros*/
+
+ul#picture_legend{
+  text-align: center;
+  list-style-type: none;
+  margin-top: 15px;
+  color: black;
+}
+
+ul#picture_legend li{
+  display:inline-flex;
+  margin-right: 25px;
+}
+
+ul#picture_legend li span{
+  align-self: center;
+  padding-left: 10px;
+}
+
+ul.ul-icons {
+    float: left;
+    margin: 0 10px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 0;
+    color: #8B0000;
+    display: block;
+    font-family: Tahoma, Verdana, Lucida Grande, Arial, sans-serif;
+    font-weight: 700;
+    line-height: 20px;
+    text-decoration: none;
+    padding: 0 0 9px 0;
+}
+
+h2.page-title a {
+    color: #000;
+}
+
+.classl img{
+  margin-left:3px;
+}
+
+.caixa-note{
+  width:425px;
+  background:#ededed;
+  border:1px solid black;
+}
+
+
+/*welcome janela*/
+#paineltrig{
+  cursor:pointer;
+  color: #fff;
+}
+
+.userbarpref{
+display:none;
+width:350px;
+height:250px;
+background:#f6f6f6;
+border:1px solid #191919;
+right: 200px;
+top: 30px;
+position: absolute;
+z-index: 15;
+color: #000;
+font-weight:300;
+}
+
+.userbarmenu{
+  font-size:12px;
+  margin-bottom:12px;
+  float:left;
+  margin-top: 55px;
+  padding-right: 14px;
+  border-right: 1px solid #ddd;
+  max-width:35%;
+}
+
+.userbaravatar{
+   text-align:center;
+   padding-left:15px;
+   margin-bottom:15px;
+}
+
+.userbaravatar img{
+  width:65.45px;
+  height:120px;
+  margin-bottom:6px;
+}
+
+.userbarpainel{
+  float:right;
+  padding-top:5px;
+  font-size: 15px;
+  padding-right: 20px;
+}
+
+.userbarpainel a{
+  color:inherit;
+}
+
+.userbarsec{
+  padding-bottom:5px;
+  padding-top:5px;
+  border-bottom:1px solid #ddd;
+  line-height: 25px;
+  font-size: 15px;
+}
+
+/*inputs do painel*/
+input#pf_historico{
+  height:100px;
+}
+
+.plus-cont{
+  width:16px;
+  height:16px;
+  background:url(./images/plus_hov.png);
+}
+
+.plus-cont:hover{
+  background:url(./images/plus_norm.png);
+}
+
+.navbar a{
+  text-decoration:none;
+  color:#fff;
+}
+.navbar a:hover{
+  text-decoration:underline;
+}

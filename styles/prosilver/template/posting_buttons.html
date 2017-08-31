@@ -1,0 +1,121 @@
+
+<script type="text/javascript">
+// <![CDATA[
+	var form_name = 'postform';
+	var text_name = <!-- IF $SIG_EDIT -->'signature'<!-- ELSE -->'message'<!-- ENDIF -->;
+	var load_draft = false;
+	var upload = false;
+
+	// Define the bbCode tags
+	var bbcode = new Array();
+	var bbtags = new Array('[b]','[/b]','[i]','[/i]','[u]','[/u]','[quote]','[/quote]','[code]','[/code]','[list]','[/list]','[list=]','[/list]','[img]','[/img]','[url]','[/url]','[flash=]', '[/flash]','[size=]','[/size]'<!-- BEGIN custom_tags -->, {custom_tags.BBCODE_NAME}<!-- END custom_tags -->);
+	var imageTag = false;
+
+	// Helpline messages
+	var help_line = {
+		b: '{LA_BBCODE_B_HELP}',
+		i: '{LA_BBCODE_I_HELP}',
+		u: '{LA_BBCODE_U_HELP}',
+		q: '{LA_BBCODE_Q_HELP}',
+		c: '{LA_BBCODE_C_HELP}',
+		l: '{LA_BBCODE_L_HELP}',
+		o: '{LA_BBCODE_O_HELP}',
+		p: '{LA_BBCODE_P_HELP}',
+		w: '{LA_BBCODE_W_HELP}',
+		a: '{LA_BBCODE_A_HELP}',
+		s: '{LA_BBCODE_S_HELP}',
+		f: '{LA_BBCODE_F_HELP}',
+		y: '{LA_BBCODE_Y_HELP}',
+		d: '{LA_BBCODE_D_HELP}'
+		<!-- BEGIN custom_tags -->
+			,cb_{custom_tags.BBCODE_ID}: '{custom_tags.A_BBCODE_HELPLINE}'
+		<!-- END custom_tags -->
+	}
+
+	var panels = new Array('options-panel', 'attach-panel', 'poll-panel');
+	var show_panel = 'options-panel';
+
+
+// ]]>
+</script>
+<script type="text/javascript" src="{T_SUPER_TEMPLATE_PATH}/editor.js"></script>
+
+<!-- IF S_BBCODE_ALLOWED -->
+<div id="colour_palette" style="display: none;">
+	<dl style="clear: left;">
+		<dt><label>{L_FONT_COLOR}:</label></dt>
+		<dd>
+		<script type="text/javascript">
+		// <![CDATA[
+			function change_palette()
+			{
+				dE('colour_palette');
+				e = document.getElementById('colour_palette');
+				
+				if (e.style.display == 'block')
+                {
+                   document.getElementById('bbpalette').value = '';
+                }
+                else
+                {
+                   document.getElementById('bbpalette').value = '';
+                }
+			}
+
+			colorPalette('h', 15, 10);
+		// ]]>
+		</script>
+		</dd>
+	</dl>
+</div>
+
+<div id="format-buttons">
+	<input type="button" class="buttonz" accesskey="b" name="addbbcode0" value="" onclick="bbstyle(0)" title="{L_BBCODE_B_HELP}" style="background: url('./images/editor/text_bold.png');" />
+       <input type="button" class="buttonz" accesskey="i" name="addbbcode2" value="" style="background: url('./images/editor/text_italic.png');" onclick="bbstyle(2)" title="{L_BBCODE_I_HELP}" />
+       <input type="button" class="buttonz" accesskey="u" name="addbbcode4" value="" style="background: url('./images/editor/text_underline.png');" onclick="bbstyle(4)" title="{L_BBCODE_U_HELP}" />
+	   <input type="button" class="buttonz" name="addbbcode34" value="" style="background: url('./images/editor/s.png');margin-right: 15px!important;" onclick="bbstyle(34)" title="Riscado">
+	   <input type="button" class="buttonz" name="addbbcode28" value="" style="background: url('./images/editor/left.png');" onclick="bbstyle(28)" title="Esquerda">
+	   <input type="button" class="buttonz" name="addbbcode22" value="" style="background: url('./images/editor/center.png');" onclick="bbstyle(22)" title="Centralizar">
+	   <input type="button" class="buttonz" name="addbbcode32" value="" style="background: url('./images/editor/right.png');" onclick="bbstyle(32)" title="Direita">
+	   <input type="button" class="buttonz" name="addbbcode26" value="" style="background: url('./images/editor/justify.png');margin-right: 15px!important;" onclick="bbstyle(26)" title="Justificar">
+       <!-- IF S_BBCODE_QUOTE -->
+    	<input type="button" class="buttonz" accesskey="q" name="addbbcode6" value="" style="background: url('./images/editor/comment.png');" onclick="bbstyle(6)" title="{L_BBCODE_Q_HELP}" />
+       <!-- ENDIF -->
+       <input type="button" class="buttonz" accesskey="c" name="addbbcode8" value="" style="background: url('./images/editor/page_white_code.png');" onclick="bbstyle(8)" title="{L_BBCODE_C_HELP}" />
+
+       <!-- IF S_BBCODE_IMG -->
+          <input type="button" class="buttonz" accesskey="p" name="addbbcode14" value="" style="background: url('./images/editor/image.png');" onclick="bbstyle(14)" title="{L_BBCODE_P_HELP}" />
+       <!-- ENDIF -->
+		<!-- IF S_LINKS_ALLOWED -->
+          <input type="button" class="buttonz" accesskey="w" name="addbbcode16" value="" style="background: url('./images/editor/world_link.png');" onclick="bbstyle(16)" title="{L_BBCODE_W_HELP}" />
+       <!-- ENDIF -->
+	   <input type="button" class="buttonz" name="addbbcode36" value="" style="background: url('./images/editor/spoiler.png');" onclick="bbstyle(36)" title="Spoiler">
+	   <input type="button" class="buttonz" name="addbbcode24" value="" style="background: url('./images/editor/fimg=.png');" onclick="bbstyle(24)" title="Imagem Redimensionada">
+	   <input type="button" class="buttonz" name="addbbcode40" value="" style="background: url('./images/editor/youtube.png');" onclick="bbstyle(40)" title="YouTube">
+	   <input type="button" class="buttonz" name="addbbcode38" value="" style="background: url('./images/editor/table.png');margin-right: 15px!important;" onclick="bbstyle(38)" title="Tabela">
+	   <input type="button" class="buttonz" name="addbbcode30" value="" style="background: url('./images/editor/mention.png');" onclick="bbstyle(30)" title="Menção">
+
+       <input type="button" class="buttonz" accesskey="l" name="addbbcode10" value="" style="background: url('./images/editor/text_list_bullets.png');" onclick="bbstyle(10)" title="{L_BBCODE_L_HELP}" />
+       <input type="button" class="buttonz" accesskey="o" name="addbbcode12" value="" style="background: url('./images/editor/text_list_numbers.png');" onclick="bbstyle(12)" title="{L_BBCODE_O_HELP}" />
+       <input type="button" class="buttonz" accesskey="t" name="addlitsitem" value="" style="background: url('./images/editor/bullet_black.png');" onclick="bbstyle(-1)" title="{L_BBCODE_LISTITEM_HELP}" />
+       <!-- IF S_BBCODE_FLASH -->
+          <input type="button" class="buttonz" accesskey="d" name="addbbcode18" value="" style="background: url('./images/editor/page_white_flash.png');" onclick="bbstyle(18)" title="{L_BBCODE_D_HELP}" />
+       <!-- ENDIF -->
+       <input type="button" class="buttonz" name="bbpalette" id="bbpalette" value="" style="background: url('./images/editor/color_wheel.png');" onclick="change_palette();" title="{L_BBCODE_S_HELP}" />
+       
+       <select name="addbbcode20" onchange="bbfontstyle('[size=' + this.form.addbbcode20.options[this.form.addbbcode20.selectedIndex].value + ']', '[/size]');this.form.addbbcode20.selectedIndex = 2;" title="{L_BBCODE_F_HELP}">
+          <option value="50">{L_FONT_TINY}</option>
+          <option value="85">{L_FONT_SMALL}</option>
+          <option value="100" selected="selected">{L_FONT_NORMAL}</option>
+          <!-- IF not MAX_FONT_SIZE or MAX_FONT_SIZE >= 150 -->
+             <option value="150">{L_FONT_LARGE}</option>
+             <!-- IF not MAX_FONT_SIZE or MAX_FONT_SIZE >= 200 -->
+                <option value="200">{L_FONT_HUGE}</option>
+             <!-- ENDIF -->
+          <!-- ENDIF -->
+       </select>
+    <!-- BEGIN custom_tags
+          <input type="button" class="buttonz" name="addbbcode{custom_tags.BBCODE_ID}" value="" style="background: url('./images/editor/{custom_tags.BBCODE_TAG}.png');" onclick="bbstyle({custom_tags.BBCODE_ID})" title="{custom_tags.BBCODE_HELPLINE}" />
+       END custom_tags --> 
+</div>
+<!-- ENDIF -->

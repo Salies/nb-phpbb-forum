@@ -1,0 +1,24 @@
+<div id="reputation-popup"></div>
+<script type="text/javascript">
+// <![CDATA[
+	window.jQuery || document.write(unescape('%3Cscript src="{T_SUPER_TEMPLATE_PATH}/reputation/jquery-1.10.1.min.js" type="text/javascript"%3E%3C/script%3E'));
+// ]]>
+</script>
+<script type="text/javascript">
+// <![CDATA[
+	var rsfile = '{U_REPUTATION}';
+	var rsdelete = 'Você quer mesmo excluir esse Karma?';
+	var rsclearpost = 'Limpar Karma do Post?';
+	var rsclearuser = 'Limpar Karma do Usuário?';
+	var requestSent = false;
+// ]]>
+</script>
+<script type="text/javascript" src="{T_SUPER_TEMPLATE_PATH}/reputation/jquery.reputation.js"></script>
+
+<!-- IF S_RS_NOTIFICATION -->
+<script type="text/javascript">
+// <![CDATA[
+	newpopup();
+// ]]>
+</script>
+<!-- ENDIF -->

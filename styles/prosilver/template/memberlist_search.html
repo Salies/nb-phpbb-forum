@@ -1,0 +1,66 @@
+<!-- IF S_IN_SEARCH_POPUP -->
+<!-- You should retain this javascript in your own template! -->
+<script type="text/javascript">
+// <![CDATA[
+function insert_user(user)
+{
+	opener.document.forms['{S_FORM_NAME}'].{S_FIELD_NAME}.value = ( opener.document.forms['{S_FORM_NAME}'].{S_FIELD_NAME}.value.length && opener.document.forms['{S_FORM_NAME}'].{S_FIELD_NAME}.type == "textarea" ) ? opener.document.forms['{S_FORM_NAME}'].{S_FIELD_NAME}.value + "\n" + user : user;
+}
+
+function insert_marked(users)
+{
+	if (typeof(users.length) == "undefined")
+	{
+		if (users.checked)
+		{
+			insert_user(users.value);
+		}
+	}
+	else if (users.length > 0)
+	{
+		for (i = 0; i < users.length; i++)
+		{
+			if (users[i].checked)
+			{
+				insert_user(users[i].value);
+			}
+		}
+	}
+
+	self.close();
+}
+
+function insert_single(user)
+{
+	opener.document.forms['{S_FORM_NAME}'].{S_FIELD_NAME}.value = user;
+	self.close();
+}
+// ]]>
+</script>
+<script type="text/javascript" src="{T_SUPER_TEMPLATE_PATH}/forum_fn.js"></script>
+<!-- ENDIF -->
+
+<p style="margin-bottom: 3px;color: #000;font-weight: 700;font-size: 12px;">Procure um usuário ou modifique a ordem de apresentação:</p>
+<form method="post" action="{S_MODE_ACTION}" id="search_memberlist">
+<div class="panel" style="padding:10px;">
+	<div class="inner" style="display: flex;justify-content: center;">
+<div style="float:left">
+	<dl>
+		<dt><label for="username" style="color: #000;font-size:12px;">{L_USERNAME}:</label></dt>
+		<dd><input type="text" name="username" id="username" value="{USERNAME}" class="inputbox" /></dd>
+	</dl>
+</div>
+<div style=float:left;>
+	<dt><label for="sk" class="label3" style="color: #000;font-size:12px;">{L_SORT_BY}:</label></dt>
+		<dd><select name="sk" id="sk">{S_SORT_OPTIONS}</select> <select name="sd">{S_ORDER_SELECT}</select></dd>
+	</dl>
+</div>
+
+	<input type="submit" name="submit" value="OK" class="button1" style="float:left;margin-top: 11px;margin-left: 25px;"/>
+	{S_FORM_TOKEN}
+
+	<div class="clear"></div>
+	</div>
+</div>
+
+</form>

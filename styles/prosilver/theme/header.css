@@ -1,0 +1,278 @@
+/*header - parte preta e tal*/
+
+#page-header{
+  background-color: #000;
+}
+
+.headerbar{
+  display:flex;
+  position:relative;
+}
+
+/*barra de pesquisa*/
+#search-box{
+  position:absolute;
+  right:0;
+  display: flex;
+  align-self: center;
+}
+
+/*menu hamburger e seu dropdown*/
+
+.hamburger-menu{
+  display:flex;
+  align-self:center;
+  width: 50px;
+  height: 51px;
+  border-radius: 5px 5px 0 0;
+  background:url(./images/hamburguermenu.png) center 15px no-repeat;
+}
+
+.hamburger-menu:hover{
+  background:url(./images/hamburguermenu.png) center 15px no-repeat #555555;
+}
+
+#hamburguermenu-exp {
+    width: 60px;
+    height: 51px;
+    display: block;
+}
+
+.hpanel {
+    width: 272px;
+    background: #e5e5e5;
+    display: none;
+    position: absolute;
+    top: 60px;
+    z-index: 100;
+    border-radius: 4px;
+    border-top-left-radius: 0px;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.5);
+    border-left: 6px solid #555;
+    overflow: hidden;
+}
+
+.hpanel a{
+  text-decoration:none;
+}
+
+.hamburger-menu:hover .hpanel {
+    display: block;
+}
+
+.hm_item {
+    height: 44px;
+    border-bottom: 1px solid #fff;
+    padding: 11px 20px;
+}
+
+.hm_item img {
+    float: left;
+    margin-right: 12px;
+}
+
+.hm_sitetitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    margin-top: 5px;
+}
+
+.hm_sitedesc {
+    font-size: 12px;
+    color: #777;
+}
+
+/*logo do site*/
+.logo{
+    align-self:center;
+    margin-left:14px;
+}
+
+/*icones das redes sociais*/
+.sociais-header {
+    float: right;
+    align-self: center;
+    margin-left: 72px;
+    font-size: 16px;
+    color:#fff;
+}
+
+.sociais-header i{
+  opacity: 0.5;
+}
+
+.sociais-header i:hover{
+  opacity: 1;
+}
+
+/*navbar*/
+
+.nava {
+    width: 100%;
+    height: 38px;
+    background: #CF1F25;
+    font-size: 14px;
+    display: flex;
+    font-family: Arial;
+}
+
+.nava ul {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.nava li {
+    float: left;
+}
+
+.nava li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding-top: 11px;
+    padding-right: 11px;
+    padding-bottom: 11px;
+    padding-left: 11px;
+    margin-right: 6px;
+    margin-left: 5px;
+    text-decoration: none;
+}
+
+.nava li a:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0px -3px 0px white inset;
+}
+
+.nava .sair a:hover{
+  background-color:#ba2525;
+}
+
+.newsbar {
+    width: 100%;
+    height: 38px;
+    background: linear-gradient(#000, #424242);
+    font-size: 14px;
+    color:#fff;
+    display: flex;
+    font-family: Arial;
+}
+
+.newsbar aside{
+  display:flex;
+  width:100%;
+  max-width: 1100px;
+  margin:0 auto;
+  text-align: left;
+  align-self:center;
+  align-items: center;
+  font-size:10px;
+}
+
+.newsbar-text{
+  display:flex;
+  color: #0096F4;
+  font-weight: 700;
+}
+
+.newsbar-text span{
+  align-self: center;
+  margin-right:8px;
+}
+
+.newsbar-text img{
+  margin-right:5px;
+}
+
+.userbarra{
+  position:fixed;
+  height:30px;
+  width:100%;
+  background:#191919;
+  display:flex;
+  align-items:center;
+  padding-left:5px;
+  color:#fff;
+  font-weight:700;
+  font-size:15px;
+  font-family: Arial, sans-serif;
+  z-index:15;
+}
+
+.u-info{
+  position:absolute;
+  font-weight:300;
+}
+
+.u-esc{
+  position:absolute;
+  display:flex;
+  align-items:center;
+  z-index:15;
+  cursor:pointer;
+}
+
+.u-esc img{
+  width:15px;
+}
+
+.u-volt{
+  position:fixed;
+  right:0;
+  background:#191919;
+  display:none;
+  margin-bottom:-3px;
+  cursor:pointer;
+}
+
+.u-volt img{
+  width:15px;
+  padding:5px;
+  margin:0;
+}
+
+#wrap{
+  z-index:13;
+}
+
+.headerbar{
+  padding-top:30px;
+}
+
+.pesq{
+  display:flex;
+}
+
+.pesq input{
+  border:none
+}
+
+.pesquisao{
+  width:285px;
+  height:22px;
+  border-top-left-radius:5px;
+  border-bottom-left-radius:5px;
+  display:inline-flex;
+}
+
+.pesquisaob input{
+  display:inline-flex;
+  height: 25px;
+  width:30px;
+  background:#6f6f6f;
+  border-top-right-radius:5px;
+  border-bottom-right-radius:5px;
+  color:#fff;
+  background-image:url(./images/search.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/*<i class="fa fa-search" aria-hidden="true"></i>*/
+.pesquisaob i{
+   padding-left: 6px;
+   padding-top:3px;
+}

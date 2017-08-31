@@ -1,0 +1,632 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}" xml:lang="{S_USER_LANG}">
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset={S_CONTENT_ENCODING}" />
+<meta http-equiv="content-style-type" content="text/css" />
+<meta http-equiv="content-language" content="{S_USER_LANG}" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+{META}
+<title>{SITENAME} &bull; <!-- IF S_IN_MCP -->{L_MCP} &bull; <!-- ELSEIF S_IN_UCP -->{L_UCP} &bull; <!-- ENDIF -->{PAGE_TITLE}</title>
+
+<!-- IF S_ENABLE_FEEDS -->
+	<!-- IF S_ENABLE_FEEDS_OVERALL --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {SITENAME}" href="{U_FEED}" /><!-- ENDIF -->
+	<!-- IF S_ENABLE_FEEDS_NEWS --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FEED_NEWS}" href="{U_FEED}?mode=news" /><!-- ENDIF -->
+	<!-- IF S_ENABLE_FEEDS_FORUMS --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_ALL_FORUMS}" href="{U_FEED}?mode=forums" /><!-- ENDIF -->
+	<!-- IF S_ENABLE_FEEDS_TOPICS --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FEED_TOPICS_NEW}" href="{U_FEED}?mode=topics" /><!-- ENDIF -->
+	<!-- IF S_ENABLE_FEEDS_TOPICS_ACTIVE --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FEED_TOPICS_ACTIVE}" href="{U_FEED}?mode=topics_active" /><!-- ENDIF -->
+	<!-- IF S_ENABLE_FEEDS_FORUM and S_FORUM_ID --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FORUM} - {FORUM_NAME}" href="{U_FEED}?f={S_FORUM_ID}" /><!-- ENDIF -->
+	<!-- IF S_ENABLE_FEEDS_TOPIC and S_TOPIC_ID --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_TOPIC} - {TOPIC_TITLE}" href="{U_FEED}?f={S_FORUM_ID}&amp;t={S_TOPIC_ID}" /><!-- ENDIF -->
+<!-- ENDIF -->
+
+<!--
+	phpBB style name: prosilver
+	Based on style:   prosilver (this is the default phpBB3 style)
+	Original author:  Tom Beddard ( http://www.subBlue.com/ )
+	Modified by:
+-->
+<link rel="shortcut icon" type="image/png" href="./nnbfav.ico"/>
+<script src="./styles/prosilver/imageset/bfb90508eb.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="./styles/prosilver/template/blaster/js.cookie-2.1.3.min.js"></script>
+
+<script type="text/javascript">
+// <![CDATA[
+	var jump_page = '{LA_JUMP_PAGE}:';
+	var on_page = '{ON_PAGE}';
+	var per_page = '{PER_PAGE}';
+	var base_url = '{A_BASE_URL}';
+	var style_cookie = 'phpBBstyle';
+	var style_cookie_settings = '{A_COOKIE_SETTINGS}';
+	var onload_functions = new Array();
+	var onunload_functions = new Array();
+
+	<!-- IF S_USER_PM_POPUP and S_NEW_PM -->
+		var url = '{UA_POPUP_PM}';
+		window.open(url.replace(/&amp;/g, '&'), '_phpbbprivmsg', 'height=225,resizable=yes,scrollbars=yes, width=400');
+	<!-- ENDIF -->
+
+	/**
+	* Find a member
+	*/
+	function find_username(url)
+	{
+		popup(url, 760, 570, '_usersearch');
+		return false;
+	}
+
+	/**
+	* New function for handling multiple calls to window.onload and window.unload by pentapenguin
+	*/
+	window.onload = function()
+	{
+		for (var i = 0; i < onload_functions.length; i++)
+		{
+			eval(onload_functions[i]);
+		}
+	};
+
+	window.onunload = function()
+	{
+		for (var i = 0; i < onunload_functions.length; i++)
+		{
+			eval(onunload_functions[i]);
+		}
+	};
+// ]]>
+</script>
+<script type="text/javascript" src="{T_SUPER_TEMPLATE_PATH}/styleswitcher.js"></script>
+<script type="text/javascript" src="{T_SUPER_TEMPLATE_PATH}/forum_fn.js"></script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<link href="{T_THEME_PATH}/print.css" rel="stylesheet" type="text/css" media="print" title="printonly" />
+<link href="{T_STYLESHEET_LINK}" rel="stylesheet" type="text/css" media="screen, projection" />
+
+<link href="{T_THEME_PATH}/normal.css" rel="stylesheet" type="text/css" title="A" />
+<link href="{T_THEME_PATH}/medium.css" rel="alternate stylesheet" type="text/css" title="A+" />
+<link href="{T_THEME_PATH}/large.css" rel="alternate stylesheet" type="text/css" title="A++" />
+
+<!--SCROLL PERSONALIZADO-->
+<link href="{T_THEME_PATH}/scroll.css" rel="stylesheet" type="text/css" />
+<script src="{T_THEME_PATH}/scroll.js"></script>
+
+<!-- IF S_CONTENT_DIRECTION eq 'rtl' -->
+	<link href="{T_THEME_PATH}/bidi.css" rel="stylesheet" type="text/css" media="screen, projection" />
+<!-- ENDIF -->
+<!-- IF not S_IS_BOT -->
+<!-- IF S_USER_LOGGED_IN -->
+<!-- PHP -->
+$NotifsServerSide_PHP = true; //contact Notifs.php to set the following vars
+require './notifs.php';
+echo '<script type="text/javascript">
+var NotifsServerSide_JSON = \''.$NotifsServerSide_JSON.'\';
+var NotifsServerSide_JSON_count = \''.$NotifsServerSide_JSON_count.'\';
+var NotifsServerSide_email_chk = \''.$NotifsServerSide_email_chk.'\';
+</script>';
+<!-- ENDPHP -->
+<link rel="stylesheet" href="/css/notifs.css" type="text/css" />
+<script src="/js/notifs.js"></script>
+<script src="/js/json2.min.js"></script>
+<!-- ENDIF -->
+<!-- ENDIF -->
+<!-- Place this data between the <head> tags of your website -->
+<meta name="description" content="Tudo sobre Nintendo, Switch, Wii U, 3DS e suas franquias como Mario, Zelda, Metroid e Pokémon. Blog, fórum, revista digital, campeonatos e mais!" />
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@nintendoblast">
+<meta name="twitter:title" content="Page Title">
+<meta name="twitter:description" content="Tudo sobre Nintendo, Switch, Wii U, 3DS e suas franquias como Mario, Zelda, Metroid e Pokémon. Blog, fórum, revista digital, campeonatos e mais!">
+<meta name="twitter:creator" content="@nintendoblast">
+<meta name="twitter:image" content="http://imgur.com/o4ZxNf7.png">
+
+<!-- Open Graph data -->
+<meta property="og:title" content="Fórum Nintendo Blast" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://forum.nintendoblast.com.br/" />
+<meta property="og:image" content="http://i.imgur.com/kdET9Os.png" />
+<meta property="og:description" content="Tudo sobre Nintendo, Switch, Wii U, 3DS e suas franquias como Mario, Zelda, Metroid e Pokémon. Blog, fórum, revista digital, campeonatos e mais!" />
+<meta property="og:site_name" content="Fórum Nintendo Blast" />
+</head>
+
+<body style="background-attachment: fixed;" id="phpbb" class="section-{SCRIPT_NAME} {S_CONTENT_DIRECTION}">
+	<!--FUNDOS PERSONALIZADOS-->
+<script type="text/javascript">
+			//funcao pra mostrar/esconder o botao e painel
+$(document).ready(function(){
+	$( "#fundo-clique" ).click(function() {
+		$( ".fundo-bloco" ).fadeToggle("fast");
+	});
+
+	//mudar o fundo
+	$(".fundo-botao").click(function() {
+		var url = $('#fundo-campo').val();
+		var cust = 'sim';
+		$('#phpbb').css('background-image','url(' + url + ')');
+		$('#phpbb').css('background-repeat','no-repeat');
+		$('#phpbb').css('background-size', '100%');
+		Cookies.set('nb_custom_bg', url, { expires: 999999 });
+		Cookies.set('custom_bg', cust, { expires: 999999 });
+	});
+
+	$( ".back_thumb" ).click(function() {
+  	var url = $(this).data().url;
+		$('#phpbb').css('background-repeat','repeat');
+		$('#phpbb').css('background-size', 'auto auto');
+  	$('#phpbb').css('background-image','url(' + url + ')');
+    Cookies.set('nb_custom_bg', url, { expires: 999999 });
+		Cookies.set('custom_bg', 'nao', { expires: 999999 });
+	});
+
+  var url = Cookies.get('nb_custom_bg');
+	var cust = Cookies.get('custom_bg');
+	if(cust=='sim'){
+		$('#phpbb').css('background-repeat','no-repeat');
+		$('#phpbb').css('background-size', '100%');
+	}
+    if(url) {
+      $('#phpbb').css('background-image','url(' + url + ')');
+  }
+
+  $( ".sceditor-button-emoticon" ).click(function() {
+    $( ".smiley-after-box").toggleClass( "smtop" );
+  });
+
+});
+</script>
+					<img src="http://imgur.com/o1QscHU.png" id="fundo-clique"/>
+					<aside class="fundo-bloco">
+					<span>Escolha seu fundo personalizado:</span>
+					<div class="back_thumb fundo-demo" style="background: url(https://oiboi.files.wordpress.com/2015/09/teste-2.png)" data-url="./styles/prosilver/imageset/fundos/teste-2.png"></div>
+					<div class="back_thumb fundo-demo" style="background: url(http://i.imgur.com/qR1TcgQ.png)" data-url="./styles/prosilver/imageset/fundos/9pCGfAd.png"></div>
+					<div class="back_thumb fundo-demo" style="background: url(http://i.imgur.com/JU2ACws.jpg)" data-url="./styles/prosilver/imageset/fundos/JU2ACws.jpg"></div>
+					<div class="back_thumb fundo-demo" style="background: url(http://i.imgur.com/szKseUV.png)" data-url="./styles/prosilver/imageset/fundos/Stamp_BG.jpg"></div>
+					<div class="back_thumb fundo-demo" style="background: url(https://oiboi.files.wordpress.com/2015/09/teste3.png)" data-url="./styles/prosilver/imageset/fundos/teste3.png"></div>
+					<div class="back_thumb fundo-demo" style="background: url(http://i.imgur.com/FRJBrqw.png)" data-url="./styles/prosilver/imageset/fundos/MxJ4mEC.png"></div>
+					<div class="back_thumb fundo-demo" style="background: url(http://i.imgur.com/YDXTVal.png)" data-url="./styles/prosilver/imageset/fundos/eon_tiles_by_bluwiikoon.png"></div>
+					<div class="back_thumb fundo-demo" style="background: url(http://i.imgur.com/3QqBTmi.png)" data-url="./styles/prosilver/imageset/fundos/4dee5faa241112ecfff11d45ce3b74d2.jpg"></div>
+					<div class="back_thumb fundo-demo" style="background:url(http://imgur.com/D4jdBVE.png) 40% 25%;" data-url="./styles/prosilver/imageset/fundos/mVdIJL0.jpg"></div>
+					<span style="margin-top:280px;">Ou insira seu próprio fundo:</span>
+					<div>
+					<input type="text" placeholder=" Endereço de outra imagem" id="fundo-campo">
+					<a href="#" class="fundo-botao" style="color:#fff;">Enviar</a>
+					</div>
+					</aside>
+	<!--FIM DOS FUNDOS PERSONALIZADOS-->
+<div id="page-header">
+<!-- IF S_USER_LOGGED_IN -->
+<script>
+$(document).ready(function(){
+$( ".u-esc" ).click(function() {
+    $( ".userbarra" ).slideToggle("fast");
+  $( ".u-volt" ).slideToggle("fast");
+  var userpad = '0px';
+  Cookies.set('nb_userbar', userpad, { expires: 999999 });
+  $(".headerbar").css('padding-top', ''+userpad+'');
+  $(".hpanel").css('margin-top', '0px');
+});
+
+$( ".u-volt" ).click(function() {
+  $( ".userbarra" ).slideToggle("fast");
+  $( ".u-volt" ).slideToggle("fast");
+  var userpad = '30px';
+  Cookies.set('nb_userbar', userpad, { expires: 999999 });
+  $(".headerbar").css('padding-top', ''+userpad+'');
+  $(".hpanel").css('margin-top', '30px');
+});
+
+var userpad = Cookies.get('nb_userbar');
+$(".headerbar").css('padding-top', ''+userpad+'');
+if(userpad == '30px'){
+  $( ".userbarra" ).show();
+  $(".hpanel").css('margin-top', '30px');
+}
+else if(userpad == null){
+  $( ".userbarra" ).show();
+}
+else{
+  $( ".userbarra" ).hide();
+  $( ".u-volt" ).show();
+  $(".hpanel").css('margin-top', '0px');
+}
+
+$( "#paineltrig" ).click(function() {
+  $( ".userbarpref").toggle();
+});
+
+$("a#NotifsHelp").css('display', 'none');
+});
+</script>
+  <div class="userbarra" style="<!-- IF not S_USER_LOGGED_IN --> display:none;<!-- ENDIF -->">
+  <img src="http://i.imgur.com/ocrEyyZ.png" style="width:22px;margin-right:8px;"/>
+  <span>Fórum Nintendo Blast</span>
+  <span class="u-info" style="right: 200px;"><a id="paineltrig">Bem-Vindo, {S_USERNAME}</a></span>
+  <!--MENU DE CONTROLE-->
+  <div class="userbarpref" style="width: 180px;padding: 10px;padding-top: 0;">
+    <section class="userbarpainel" style="float:none;">
+      <aside class ="userbarsec" style="border-bottom:1px solid #ddd;">
+        <a href="./memberlist.php?mode=viewprofile&u={CURRENT_USER}">Ver meu perfil</a><br>
+        <a href="./ucp.php?i=profile">Editar meu perfil</a><br>
+      </aside>
+      <aside class ="userbarsec" style="border-bottom:1px solid #ddd;">
+        <a href="./search.php?keywords=&terms=all&author={S_USERNAME}&sc=1&sf=firstpost&sr=topics&sk=t&sd=d&st=0&ch=300&t=0&submit=Pesquisar">Todos os tópicos</a><br>
+        <a href="./search.php?keywords=&terms=all&author={S_USERNAME}&sc=1&sf=all&sr=posts&sk=t&sd=d&st=0&ch=300&t=0&submit=Pesquisar">Todas as mensagens</a><br>
+        <a href="./ucp.php?i=main&mode=subscribed">Seus tópicos seguidos</a><br>
+        <a href="./ucp.php?i=pm&folder=inbox">Minhas mensagens privadas</a><br>
+      </aside>
+      <aside style="padding-top:5px;line-height: 25px;">
+        <a href="./ucp.php?i=profile">Painel de Controle</a><br>
+        <a href="{U_LOGIN_LOGOUT}">Sair</a>
+      </aside>
+    </section>
+  </div>
+  <!--FIM-->
+  <span class="u-info" style="right:60px;margin-top:2px;">
+    <a href="#" id="notifyLink" style="color:#fff;">Notificações (<strong id="notifyCount">Carregando...</strong>)</a>
+<table>
+      <tr>
+    	    <td class="genmed">
+    	        <!-- IF not S_IS_BOT -->
+    	                <div id="notifyWin" style="display:none;color:#000;"></div>
+    	            <!-- ENDIF -->
+    	    </td>
+    	</tr>
+</table>
+  </span>
+  <span class="u-esc" style="right:23px;"><img src="http://imgur.com/ssQYHg1.png"/></span>
+  </div>
+<!-- ENDIF -->
+  <div class="u-volt" style="<!-- IF not S_USER_LOGGED_IN --> display:none;<!-- ENDIF -->">
+  <img src="http://imgur.com/Jtocnx4.png"/>
+  </div>
+		<div class="headerbar" style="<!-- IF not S_USER_LOGGED_IN --> padding-top:0; <!-- ENDIF -->">
+
+  <!--HAMBURGER MENU E DROPDOWN-->
+  <div class="hamburger-menu">
+  <div id="hamburguermenu-exp">
+
+  <div class="hpanel">
+  <!--GameBlast-->
+  <a href="http://www.gameblast.com.br/"><div class="hm_item"><img src="http://lh5.googleusercontent.com/-itoDuDBjFeY/VFh_Ti3WLgI/AAAAAAAABWU/3XRLXXwRsrc/s44/gbmenuicon.png">           <div class="hm_sitetitle">GameBlast</div>
+  <div class="hm_sitedesc">Consoles, PC, Mobile e mais</div></div></a>
+
+  <!--NintendoBlast-->
+  <a href="http://www.nintendoblast.com.br/">
+  <div class="hm_item">
+  <img src="https://4.bp.blogspot.com/-BAJeLPgszTs/WHgupColJoI/AAAAAAAAMl8/JeiyB1RjMDQVhbnMKcpVAhqpqbuW1WJyQCLcB/s1600/nbmenuicon.png">
+  <div class="hm_sitetitle">Nintendo Blast</div>
+  <div class="hm_sitedesc">Switch, Wii U, 3DS e mais</div>
+  </div></a>
+
+  <!--PSB-->
+  <a href="http://forum.playstationblast.com.br/">
+  <div class="hm_item">
+  <img src="https://3.bp.blogspot.com/-tFPqi9mjnZI/WHgupPqiF3I/AAAAAAAAMl4/MG-lLIeGOfsb3PLpcyCyI7jsZ8tDwYh5wCLcB/s1600/psbmenuicon.png">
+  <div class="hm_sitetitle">PlayStation Blast</div>
+  <div class="hm_sitedesc">PS4, PS VIta, PS3, PSP e mais</div>
+  </div> </a>
+
+  <!--XB-->
+  <a href="http://forum.xboxblast.com.br/">
+  <div class="hm_item"><img src="http://lh3.googleusercontent.com/-U2ga9yvgqng/VFh_UZS9ugI/AAAAAAAABWk/zjvKAtQLVEU/s44/xbmenuicon.png">           <div class="hm_sitetitle">Xbox Blast</div>
+  <div class="hm_sitedesc">XBO, X360, XB e mais</div></div></a>
+
+  <!--GeekBlast...-->
+	<a href="http://www.geekblast.com.br/">
+  <div class="hm_item">
+  <img src="https://4.bp.blogspot.com/-lsjZ0HiqYq4/WHgupDbzJPI/AAAAAAAAMmA/b2MgF8EQN4MdcOBeAHi-V3rF2mvbuR7SQCLcB/s1600/geekmenuicon.png"><div class="hm_sitetitle">GeekBlast</div><div class="hm_sitedesc">Cinema, séries, HQs e mais</div>
+  </div><div style="background: #fff;padding:12px 4px 14px 0;font-size:13px;font-weight:700;text-align:center;color:#ccc;word-spacing: 4px;">
+	</a>
+  <!--Termos-->
+  <a style="word-spacing: 0px" href="http://www.gameblast.com.br/p/termos-de-uso.html">Termos de Uso</a> | <a href="http://www.gameblast.com.br/p/anuncie.html">Anuncie</a> | <a href="http://www.gameblast.com.br/p/sobre.html">Sobre</a>
+  </div>
+
+  </div>
+
+  </div>
+  </div>
+
+  <!--FIM DO HAMBURGER (vão comer no Subway)-->
+
+  <!--LOGO-->
+  <a href="/" class="logo"><img src="./styles/prosilver/imageset/nblast10.png" alt="Nintendo Blast"></a>
+
+  <!--REDES SOCIAIS-->
+  <div class="sociais-header">
+  	<a href="http://facebook.com/nintendoblast" style="text-decoration:none;color:inherit;"><i class="fa fa-facebook-square fa-lg" aria-hidden="true" style="margin-right:9px;"></i></a>
+  	<a href="http://twitter.com/nintendoblast" style="text-decoration:none;color:inherit;"><i class="fa fa-twitter fa-lg" aria-hidden="true" style="margin-right:9px;"></i></a>
+  	<a href="http://plus.google.com/+NintendoBlast" style="text-decoration:none;color:inherit;"><i class="fa fa-google-plus-square fa-lg" aria-hidden="true" style="margin-right:9px;"></i></a>
+  	<a href="http://www.youtube.com/GameBlastTV" style="text-decoration:none;color:inherit;"><i class="fa fa-youtube-play fa-lg" aria-hidden="true" style="margin-right:9px;"></i></a>
+  </div>
+
+  <!--BARRA DE PESQUISA-->
+	<!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH -->
+		<div id="search-box">
+			<form action="{U_SEARCH}" method="get" id="search">
+			<fieldset>
+				<div class="pesq"><input style="width: 170px;height: 19px;"name="keywords" id="keywords" type="text" maxlength="128" title="Pesquisar por palavras-chaves" class="inputbox search pesquisao" value="Pesquisar…" onclick="if(this.value=='Pesquisar…')this.value='';" onblur="if(this.value=='')this.value='Pesquisar…';">
+          <aside class="pesquisaob">
+            <input value="" type="submit" /><br />
+          </aside>
+        </div>
+				<a href="{U_SEARCH}" title="{L_SEARCH_ADV_EXPLAIN}">{L_SEARCH_ADV}</a> {S_SEARCH_HIDDEN_FIELDS}
+			</fieldset>
+			</form>
+		</div>
+	<!-- ENDIF -->
+		</div>
+</div>
+<div class="nava">
+<!-- IF S_USER_LOGGED_IN -->
+<ul>
+<li style="margin-left: 0px;padding-left:0;"><a href="{U_INDEX}" accesskey="h" data-navbar-reference="index" itemprop="url" style="margin-left:0;"><b>INÍCIO</b></a></li>
+<li><a href="./regras.php"><b>REGRAS</b></a></li>
+<li><a href="{U_FAQ}" rel="help" title="{L_FAQ_EXPLAIN}" role="menuitem" style="border-right:0;"><b>FAQ</b></a></li>
+<li><a href="./memberlist.php?mode=searchuser" role="menuitem"><b>MEMBROS</b></a></li>
+<li><a href="{U_GROUPS}" role="menuitem"><b>GRUPOS</b></a></li>
+<li><a href="./ucp.php?i=profile"><b>PERFIL</b></a></li>
+<li><a href="./niveis.php"><b>NÍVEIS</b></a></li>
+<li><a href="./search.php"><b>BUSCAR</b></a></li>
+<li><a href="./badges.php"><b>BADGES</b></a></li>
+<li><a href="https://discord.gg/uQsUpv8"><b><i class="fa fa-comments" aria-hidden="true" style="width:14px;"></i>  CHAT</b></a></li>
+<li style="overflow:hidden;"><a href="{U_PRIVATEMSGS}" role="menuitem"><b><i class="fa fa-envelope" aria-hidden="true" style="width:14px;<!-- IF S_USER_UNREAD_PRIVMSG neq 0 -->-webkit-text-stroke: 1px #ffa600;<!-- ENDIF -->"></i><!-- IF S_USER_UNREAD_PRIVMSG neq 0 -->  NOVA MSG <!-- ELSE -->  MENSAGENS<!-- ENDIF --></b></a></li>
+<li class="sair"><a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem"><b>SAIR</b></a></li>
+</ul>
+<!-- ELSE -->
+	<ul>
+	<li style="margin-left: 0px;padding-left:0;"><a href="./index.php" accesskey="h" data-navbar-reference="index" itemprop="url" style="margin-left:0;"><b>INÍCIO</b></a></li>
+	<li><a href="./app.php/rules"><b>REGRAS</b></a></li>
+	<li><a href="./faq.php" rel="help" title="Questões mais frequentes" role="menuitem" style="border-right:0;"><b>FAQ</b></a></li>
+	<li><a href="./memberlist.php?mode=searchuser" role="menuitem"><b>MEMBROS</b></a></li>
+	<li><a href="{U_GROUPS}" role="menuitem"><b>GRUPOS</b></a></li>
+	<li><a href="./search.php"><b>BUSCAR</b></a></li>
+	<li><a href="http://feeds.nintendoblast.com.br/forum-n-blast"><i class="fa fa-rss-square" aria-hidden="true" style="width:14px;"></i><b>  FEED RSS</b></a></li>
+	<li><a href="./ucp.php?mode=register"><i class="fa fa-user-plus" aria-hidden="true" style="width:14px;"></i><b>    REGISTRAR-SE</b></a></li>
+	<li><a href="./ucp.php?mode=login" title="Entrar" accesskey="x" role="menuitem"><i class="fa fa-sign-in" aria-hidden="true" style="width:14px;"></i><b>  LOGIN</b></a></li>
+	</ul>
+<!-- ENDIF -->
+</div>
+<style>
+div#ticker-area .headline a{
+	color:#fff;
+}
+
+div#creditfooter{
+	display:none;
+}
+
+div.feedburnerFeedBlock li{
+	list-style: none;
+}
+
+.sidebar-blog li{
+	margin-bottom:5px;
+}
+
+.sidebar-blog li a{
+	color:#000;
+}
+</style>
+<script>
+$(document).ready(function(){
+$( ".sidebar-blog li" ).prepend( '<img src="./styles/prosilver/imageset/ninten35.png"/>' );
+});
+</script>
+<div class="newsbar">
+	<aside><span class="newsbar-text">
+<div style="background:#CF1F25;float:left;font-size:10px;font-weight:bold;padding: 5px 8px 5px 7px;margin-right: 9px;margin-top: 2px;color:#fff;"><img src="http://i.imgur.com/uych1Kz.png" style="margin:0 4px -3px 0">ÚLTIMAS ATUALIZAÇÕES </div>
+		<img src="./styles/prosilver/imageset/forumpostbullet.png" style="width:16px;height:11px;align-self: center;"/></span>
+		<div id="ticker-area" style="padding: 4px 6px 0 6px;overflow: hidden;height: 15px;font-size: 13px;">
+					  <script src="http://feeds.feedburner.com/n-blast?format=sigpro" type="text/javascript"></script><div class="feedburnerFeedBlock" id="n-blastqrdp6g86ourfpe4jjgm2j0j2kg"><ul><li><span class="headline"></span></li></ul> <div id="creditfooter"><a href="https://feedburner.google.com" target="_blank"><img src="//feedburner.google.com/fb/images/buzzboost-pwrd.gif" alt="Headlines by FeedBurner" style="border:0"></a></div></div>
+				</div>
+	</aside>
+</div>
+
+<div id="wrap">
+	<a id="top" name="top" accesskey="t"></a>
+	<a name="start_here"></a>
+<!--SIDEBAR-->
+<div id="sidebar">
+	<div class="sidebar-ad"><img src="http://imgur.com/nSv6b5t.png"/></div>
+	<!--ULTIMOS ASSUNTOS-->
+  <!-- IF S_USER_LOGGED_IN -->
+	<section style="box-shadow: 0px 0px 4px rgba(0,0,0,0.2);">
+	<div class="barra-assuntos"><aside>últimos assuntos</aside></div>
+	<script>
+$(document).ready(function(){
+	$(function(){
+	    $('.sidebar-last').mCustomScrollbar({theme:"dark-2",axis:"y"});
+	});
+});
+	</script>
+	<div class="sidebar-last" id="style4">
+		<div id="recent-widget"></div>
+	</div>
+
+<!-- IF U_ACP -->
+	<script type="text/javascript">
+    //se for mod
+httpRequest("recent-widget-mod.php", showrecent);
+function showrecent(WIDGET){
+ d = document.getElementById('recent-widget');
+ d.innerHTML = WIDGET;
+}
+
+function httpRequest(url, callback) {
+  var httpObj = false;
+  if (typeof XMLHttpRequest != 'undefined') {
+    httpObj = new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    try{
+      httpObj = new ActiveXObject('Msxml2.XMLHTTP');
+    } catch(e) {
+      try{
+        httpObj = new ActiveXObject('iMicrosoft.XMLHTTP');
+      } catch(e) {}
+    }
+  }
+  if (!httpObj) return;
+  httpObj.onreadystatechange = function() {
+    if (httpObj.readyState == 4) { // when request is complete
+      callback(httpObj.responseText);
+    }
+  };
+  httpObj.open('GET', url, true);
+  httpObj.send(null);
+}
+</script>
+
+<!-- ELSEIF S_GROUP_10 -->
+    <script type="text/javascript">
+    //se for sb
+httpRequest("recent-widget-special.php", showrecent);
+function showrecent(WIDGET){
+ d = document.getElementById('recent-widget');
+ d.innerHTML = WIDGET;
+}
+
+function httpRequest(url, callback) {
+  var httpObj = false;
+  if (typeof XMLHttpRequest != 'undefined') {
+    httpObj = new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    try{
+      httpObj = new ActiveXObject('Msxml2.XMLHTTP');
+    } catch(e) {
+      try{
+        httpObj = new ActiveXObject('iMicrosoft.XMLHTTP');
+      } catch(e) {}
+    }
+  }
+  if (!httpObj) return;
+  httpObj.onreadystatechange = function() {
+    if (httpObj.readyState == 4) { // when request is complete
+      callback(httpObj.responseText);
+    }
+  };
+  httpObj.open('GET', url, true);
+  httpObj.send(null);
+}
+</script>
+
+<!-- ELSEIF S_GROUP_16 -->
+  <script type="text/javascript">
+  //se for user normal
+httpRequest("recent-widget-vacilo.php", showrecent);
+function showrecent(WIDGET){
+ d = document.getElementById('recent-widget');
+ d.innerHTML = WIDGET;
+}
+
+function httpRequest(url, callback) {
+  var httpObj = false;
+  if (typeof XMLHttpRequest != 'undefined') {
+    httpObj = new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    try{
+      httpObj = new ActiveXObject('Msxml2.XMLHTTP');
+    } catch(e) {
+      try{
+        httpObj = new ActiveXObject('iMicrosoft.XMLHTTP');
+      } catch(e) {}
+    }
+  }
+  if (!httpObj) return;
+  httpObj.onreadystatechange = function() {
+    if (httpObj.readyState == 4) { // when request is complete
+      callback(httpObj.responseText);
+    }
+  };
+  httpObj.open('GET', url, true);
+  httpObj.send(null);
+}
+</script>
+<!-- ELSE -->
+  <script type="text/javascript">
+  //se for user normal
+httpRequest("recent-widget.php", showrecent);
+function showrecent(WIDGET){
+ d = document.getElementById('recent-widget');
+ d.innerHTML = WIDGET;
+}
+
+function httpRequest(url, callback) {
+  var httpObj = false;
+  if (typeof XMLHttpRequest != 'undefined') {
+    httpObj = new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    try{
+      httpObj = new ActiveXObject('Msxml2.XMLHTTP');
+    } catch(e) {
+      try{
+        httpObj = new ActiveXObject('iMicrosoft.XMLHTTP');
+      } catch(e) {}
+    }
+  }
+  if (!httpObj) return;
+  httpObj.onreadystatechange = function() {
+    if (httpObj.readyState == 4) { // when request is complete
+      callback(httpObj.responseText);
+    }
+  };
+  httpObj.open('GET', url, true);
+  httpObj.send(null);
+}
+</script>
+<!-- ENDIF -->
+
+</section>
+<!-- ENDIF -->
+<!--FIM DOS ULTIMOS ASSUNTOS-->
+<!-- IF not S_USER_LOGGED_IN -->
+<div class="sidebar-log">
+<div class="bemv"><b>Bem-vindo!</b></div>
+<p style="font-size:11px;text-align:center;margin-top:9px;color:#999;">
+  Registre-se no fórum e utilize sua conta com avatar e assinatura, além de participar de <b>promoções</b> e acessar <b>conteúdo exclusivo</b> para membros.<br>
+</p>
+<div style="font-size:11px;font-weight:bold;text-align:center;padding:10px 0 15px;display:block">
+  <a href="./ucp.php?mode=register" style="background:#A40D00;color:#fff;padding:6px 15px 8px;">
+    <img src="./styles/prosilver/imageset/ninten51.png" style="margin-bottom:-5px">Registrar-se no Fórum</a>
+  </div>
+</div>
+<!-- ENDIF -->
+	<div style="text-align: center;" class="sidebar-like">
+		<div class="barra-assuntos" style="margin-bottom: 8px;"><aside>CURTA ESTA PÁGINA</aside></div>
+		<div style="display: inline-block;" class="fb-like" data-href="https://www.facebook.com/nintendoblast" data-width="275px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+	</div>
+	<div class="sidebar-ad"><img src="http://imgur.com/FSypKvI.png"/></div>
+	<div class="sidebar-blog">
+			<div class="barra-assuntos"><aside>Últimas do Site</aside></div>
+		<aside style="overflow:hidden;padding-top: 7.5px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px;line-height: 1.3em;font-size:12px;">
+		<span class="feed">
+			<script type="text/javascript" src="http://feeds.feedburner.com/n-blast?format=sigpro"></script>
+			<div class="feedburnerFeedBlock" id="n-blastqrdp6g86ourfpe4jjgm2j0j2kg">
+					<div id="creditfooter">
+						<a href="https://feedburner.google.com" target="_blank"><img src="//feedburner.google.com/fb/images/buzzboost-pwrd.gif" alt="Headlines by FeedBurner" style="border:0"></a>
+					</div>
+				</div>
+			</span>
+		</aside>
+	</div>
+</div>
+	<div id="page-body">
+		<!-- IF S_BOARD_DISABLED and S_USER_LOGGED_IN and (U_MCP or U_ACP) -->
+		<div id="information" class="rules">
+			<div class="inner"><span class="corners-top"><span></span></span>
+				<strong>{L_INFORMATION}:</strong> {L_BOARD_DISABLED}
+			<span class="corners-bottom"><span></span></span></div>
+		</div>
+	</div>
+		<!-- ENDIF -->
